@@ -18,3 +18,7 @@ export function postChoices(choice) {
    
   })
 }
+
+export function joinRoom(code) {
+  socket.emit('join room', code)
+}
