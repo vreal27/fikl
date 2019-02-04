@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { postChoices } from '../actions/fikl';
 
+import ElimItem from './ElimItem'
+
 
 class List extends Component {
     state = {
@@ -28,6 +30,11 @@ class List extends Component {
                     <input value={this.state.choice} onChange={this.onChange} placeholder="Enter a choice"/>
 
                 </form>
+                <ul>
+                    {this.props.choices.map(c =>(
+                        <StrikeOut key={c.id} {...c}/>
+                    ))}
+                </ul>
             </div>
         )
 

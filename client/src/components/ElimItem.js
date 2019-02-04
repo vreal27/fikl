@@ -3,17 +3,21 @@ import { connect } from 'react-redux'
 import "../styles/ElimItem.css"
 
 
-class Delete extends Component {
+class StrikeOut extends Component {
     deleteChoice = (e) => {
-        
+        deleteIt(this.props.id)
+    }
+
+    changeStatus = (e) => {
+        editStatus(this.props.id)
     }
 
     render() {
         return (
             <div>
                 <li className= {this.props.status ? '' : 'complete'} onClick={this.changeStatus}>
-                    {this.props.text}
-                <button className="delete" onClick ={this.deleteItem}>X</button>
+                    {this.props.choice}
+                <button className="delete" onClick ={this.deleteIt}>X</button>
                  </li>
             </div>
         )
@@ -21,11 +25,6 @@ class Delete extends Component {
 }
 
 
-function MapStateToProps(appState) {
-    return {
-
-    }
-} 
 
 
-export default connect(MapStateToProps)(Delete)
+export default StrikeOut
