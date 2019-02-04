@@ -15,7 +15,6 @@ export function postChoices(choice) {
       choice: choice,
       status: true
     }
-   
   })
 }
 
@@ -29,3 +28,25 @@ export function editStatus(id){
 export function joinRoom(code) {
   socket.emit('join room', code)
 }
+
+export function setCategory(category) {
+  socket.emit('set category', category)
+}
+
+socket.on('set category', category => {
+  store.dispatch({
+    type: "SET_CATEGORY",
+    payload: category
+  })
+})
+
+export function setUsername(username) {
+  socket.emit('set username', username)
+}
+
+socket.on('set category', username => {
+  store.dispatch({
+    type: "SET_USERNAME",
+    payload: username
+  })
+})

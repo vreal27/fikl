@@ -10,7 +10,6 @@ class StrikeOut extends Component {
     }
 
     render() {
-        console.log('props',this.props)
         return (
             <div>
                 <li className= {this.props.status ? '' : 'complete'} onClick={this.changeStatus}>

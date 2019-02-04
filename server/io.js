@@ -13,12 +13,17 @@ export default function(server) {
     // Add/delete item
 
     // Category
-
+      socket.on('set category', category => {
+        socket.emit('set category', category)
+      })
     // Chat room function
 
     // Change Turn
 
-
+    // Username
+      socket.on('set username', username => {
+        socket.emit('set username', username)
+      })
 
 
     

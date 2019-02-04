@@ -23,16 +23,17 @@ class List extends Component {
     }
 
     render() {
-        console.log(this.state.choice)
         return (
             <div>
+                <h1>{this.props.match.params.roomcode}</h1>
+                <h2>Picking: {this.props.category}</h2>
                 <form autoComplete="off" onSubmit={this.handleSubmit}>
 
                     <input type="text" name="choice" value={this.state.choice} onChange={this.onChange} placeholder="Enter a choice"/>
 
-                </form>
-                <ul>
-                    {this.props.choices.map(c =>(
+                 </form>
+                 <ul>
+                     {this.props.choices.map(c =>(
                         <StrikeOut key={c.id} {...c}/>
                     ))}
                 </ul>
@@ -44,9 +45,9 @@ class List extends Component {
 
 
 function MapStateToProps(appState) {
-    console.log('theState', appState)
     return {
-        choices: appState.listReducer.choices
+        choices: appState.listReducer.choices,
+        category: appState.listReducer.category
     }
 }
 
