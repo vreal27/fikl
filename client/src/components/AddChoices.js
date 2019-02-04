@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { postChoices } from '../actions/fikl';
-
-import ElimItem from './ElimItem'
+import '../styles/ElimItem.css'
+import StrikeOut from './ElimItem'
 
 
 class List extends Component {
@@ -23,11 +23,12 @@ class List extends Component {
     }
 
     render() {
+        console.log(this.state.choice)
         return (
             <div>
                 <form autoComplete="off" onSubmit={this.handleSubmit}>
 
-                    <input value={this.state.choice} onChange={this.onChange} placeholder="Enter a choice"/>
+                    <input type="text" name="choice" value={this.state.choice} onChange={this.onChange} placeholder="Enter a choice"/>
 
                 </form>
                 <ul>
@@ -43,6 +44,7 @@ class List extends Component {
 
 
 function MapStateToProps(appState) {
+    console.log('theState', appState)
     return {
         choices: appState.listReducer.choices
     }
