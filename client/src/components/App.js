@@ -1,9 +1,11 @@
 import React, { Component } from 'react'
 import { Provider } from 'react-redux'
-import { BrowserRouter as Router, Route } from 'react-router-dom' 
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom' 
 import store from '../store'
 
-import Home from './Home'
+import Start from './Start'
+import NewRoom from './NewRoom'
+import JoinRoom from './JoinRoom'
 
 class App extends Component {
   render() {
@@ -11,7 +13,12 @@ class App extends Component {
       <Provider store={store}>
         <Router>
           <div>
-            <Route path="/" exact component={Home} />
+            <Switch>
+              <Route path="/" exact component={Start} />
+              <Route path="/newroom" exact component={NewRoom} />
+              <Route path="/joinroom" exact component={JoinRoom} />
+              <Route path="/:roomcode" component={Start} />
+            </Switch>
           </div>
         </Router>
       </Provider>
