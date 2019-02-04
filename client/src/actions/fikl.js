@@ -6,11 +6,13 @@ axios.defaults.baseURL = '/api'
 
 const socket = io.connect()
 
-export function makeACall() {
-  axios.get('/example').then(resp => {
-    store.dispatch({
-      type: 'EXAMPLE', 
-      example: resp.data.example
-    })
+export function postChoices(choice) {
+  store.dispatch({
+    type: 'POST_CHOICE',
+    choiceList: {
+      choice: choice,
+      status: true
+    }
+   
   })
 }
