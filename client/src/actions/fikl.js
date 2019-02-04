@@ -18,6 +18,13 @@ export function postChoices(choice) {
   })
 }
 
+export function editStatus(id){
+  store.dispatch({
+    type: 'EDIT_STATUS',
+    id: id
+  })
+}
+
 export function joinRoom(code) {
   socket.emit('join room', code)
 }

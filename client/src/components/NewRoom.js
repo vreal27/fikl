@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { joinRoom, setCategory, setUsername } from '../actions/fikl'
 
-var roomcode = ''
+const roomcode = Math.random().toString(36).toUpperCase().substr(2, 4)
 
 class NewRoom extends Component {
     state = {
@@ -12,7 +12,6 @@ class NewRoom extends Component {
     }
 
     componentDidMount() {
-        roomcode = Math.random().toString(36).toUpperCase().substr(2, 4)
         joinRoom(roomcode)
     }
 
@@ -30,6 +29,7 @@ class NewRoom extends Component {
             username: '',
             category: ''
         })
+        this.props.history.push(`/${roomcode}`)
     }
 
     render() {
@@ -52,8 +52,9 @@ class NewRoom extends Component {
                         value={this.state.category}
                         placeholder="What're we picking?"
                     />
+                    <button type="submit">Everybody's In!</button>
                 </form>
-                <span><Link to={`/${roomcode}`}>Everybody's In!</Link></span>
+                {/* <span><Link to={`/${roomcode}`}>Everybody's In!</Link></span> */}
             </div>
         )
     }
