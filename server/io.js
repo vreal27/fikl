@@ -49,6 +49,7 @@ export default function(server) {
     // Change Turn
       socket.on('next turn', username => {
         users.forEach((user, i) => {
+          console.log('step', user.step)
           if(user.username === username) {
             if(i < users.length - 1) {
               if(user.step === "wait") {
@@ -70,6 +71,7 @@ export default function(server) {
               }
             }
           }
+          console.log('user', user)
         })
       })
 
@@ -80,12 +82,22 @@ export default function(server) {
     
     // Add user
     socket.on('new user', user => {
-      users.push({
-        username: user,
-        step: 'wait',
-        isAdded: false,
-        isRemoved: false
-      })
+      if(users.length === 0) {
+        users.push({
+          username: user,
+          step: 'add',
+          isAdded: false,
+          isRemoved: false
+        })
+        socket.emit('next step', "add")
+      } else {
+        users.push({
+          username: user,
+          step: 'wait',
+          isAdded: false,
+          isRemoved: false
+        })
+      }
     })
     
 
