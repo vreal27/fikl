@@ -21,6 +21,8 @@ export default function (state = initialState, action) {
         }
         return c
       })}
+    case 'COMPLETE':
+      return {...state, step: 'complete'}
     default:
       return state
   }

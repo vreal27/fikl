@@ -7,7 +7,7 @@ axios.defaults.baseURL = '/api'
 
 const socket = io.connect()
 
-export function postChoices(choice) {
+export function postChoices(choice, username) {
   store.dispatch({
     type: 'POST_CHOICE',
     choiceList: {
@@ -15,13 +15,17 @@ export function postChoices(choice) {
       choice: choice,
       status: true
     }
+  }).then(resp => {
+    socket.emit('next turn', username)
   })
 }
 
-export function editStatus(id){
+export function editStatus(id, username){
   store.dispatch({
     type: 'EDIT_STATUS',
     id: id
+  }).then(resp => {
+    socket.emit('next turn', username)
   })
 }
 
@@ -50,4 +54,10 @@ export function setUsername(username) {
 
 socket.on('set username', username => {
   socket.emit('new user', username)
+})
+
+socket.on('complete', () => {
+  store.dispatch({
+    type: 'COMPLETE'
+  })
 })

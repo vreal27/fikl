@@ -18,7 +18,7 @@ class App extends Component {
               <Route path="/" exact component={Start} />
               <Route path="/newroom" exact component={NewRoom} />
               <Route path="/joinroom" exact component={JoinRoom} />
-              <Route path="/:roomcode/add" component={AddChoices} />
+              <Route path="/:roomcode" component={AddChoices} />
               
             </Switch>
           </div>

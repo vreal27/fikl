@@ -39,7 +39,7 @@ export default function(server) {
           socket.emit('complete')
         }
       })
-
+      
     // Category
       socket.on('set category', category => {
         socket.emit('set category', category)
@@ -47,6 +47,31 @@ export default function(server) {
     // Chat room function
 
     // Change Turn
+      socket.on('next turn', username => {
+        users.forEach((user, i) => {
+          if(user.username === username) {
+            if(i < users.length - 1) {
+              if(user.step === "wait") {
+                if(!user.isAdded) {
+                  socket.emit('next step', "add")
+                } else if (!user.isRemoved) {
+                  socket.emit('next step', "remove")
+                }
+              } else {
+                socket.emit('next step', "wait")
+              }
+            } else {
+              if(user.step === "wait") {
+                if(!user.isAdded) {
+                  socket.emit('next step', "add")
+                }
+              } else if(user.step === "add") {
+                socket.emit('complete')
+              }
+            }
+          }
+        })
+      })
 
     // Username
       socket.on('set username', username => {
