@@ -19,7 +19,7 @@ class App extends Component {
               <Route path="/newroom" exact component={NewRoom} />
               <Route path="/joinroom" exact component={JoinRoom} />
               <Route path="/:roomcode" component={List} />
-              
+              o
             </Switch>
           </div>
         </Router>
