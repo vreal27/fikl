@@ -5,7 +5,7 @@ import '../styles/ElimItem.css'
 import StrikeOut from './ElimItem'
 
 
-class List extends Component {
+class AddChoices extends Component {
     state = {
         choice: ''
     }
@@ -52,5 +52,5 @@ function MapStateToProps(appState) {
 }
 
 
-export default connect(MapStateToProps)(List) 
+export default connect(MapStateToProps)(AddChoices) 
 

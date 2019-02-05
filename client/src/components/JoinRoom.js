@@ -16,7 +16,7 @@ class JoinRoom extends Component {
     handleSubmit = (e) => {
         e.preventDefault()
         joinRoom(this.state.code)
-        this.props.history.push(`/${this.state.code}`)
+        this.props.history.push(`/${this.state.code}/add`)
     }
 
     render() {

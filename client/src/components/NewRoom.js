@@ -29,7 +29,7 @@ class NewRoom extends Component {
             username: '',
             category: ''
         })
-        this.props.history.push(`/${roomcode}`)
+        this.props.history.push(`/${roomcode}/add`)
     }
 
     render() {
