@@ -1,8 +1,10 @@
 import React, { Component } from 'react'
+import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
-import { postChoices } from '../actions/fikl';
+import { postChoices } from '../actions/fikl'
 import '../styles/ElimItem.css'
-import StrikeOut from './ElimItem'
+
+
 
 
 class AddChoices extends Component {
@@ -23,6 +25,7 @@ class AddChoices extends Component {
     }
 
     render() {
+
         return (
             <div>
                 <h1>{this.props.match.params.roomcode}</h1>
@@ -34,10 +37,10 @@ class AddChoices extends Component {
                  </form>
                  <ul>
                      {this.props.choices.map(c =>(
-                        // <StrikeOut key={c.id} {...c}/>
                         <li key={c.id}>{c.choice}</li>
                     ))}
                 </ul>
+                <Link to={`/${this.props.match.params.roomcode}/remove`}>Hello</Link>
             </div>
         )
 
@@ -48,7 +51,8 @@ class AddChoices extends Component {
 function MapStateToProps(appState) {
     return {
         choices: appState.listReducer.choices,
-        category: appState.listReducer.category
+        category: appState.listReducer.category,
+        step: appState.listReducer.step
     }
 }
 

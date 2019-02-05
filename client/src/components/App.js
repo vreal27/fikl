@@ -7,6 +7,7 @@ import AddChoices from './AddChoices'
 import Start from './Start'
 import NewRoom from './NewRoom'
 import JoinRoom from './JoinRoom'
+import RemoveChoices from './RemoveChoices'
 
 class App extends Component {
   render() {
@@ -15,10 +16,16 @@ class App extends Component {
         <Router>
           <div>
             <Switch>
+              
               <Route path="/" exact component={Start} />
               <Route path="/newroom" exact component={NewRoom} />
               <Route path="/joinroom" exact component={JoinRoom} />
+<<<<<<< HEAD
+              <Route path="/:roomcode/add" component={AddChoices} />
+              <Route path="/:roomcode/remove" component={RemoveChoices}/>
+=======
               <Route path="/:roomcode" component={AddChoices} />
+>>>>>>> master
               
             </Switch>
           </div>
