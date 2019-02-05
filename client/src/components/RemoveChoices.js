@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { postChoices } from '../actions/fikl';
+import { postChoices, editStatus } from '../actions/fikl';
 import '../styles/ElimItem.css'
-import StrikeOut from './ElimItem'
+
 
 
 class Remove extends Component {
@@ -22,19 +22,20 @@ class Remove extends Component {
         })
     }
 
+    changeStatus = (id) => {
+        editStatus(id)
+    }
+
     render() {
         return (
             <div>
                 <h1>{this.props.match.params.roomcode}</h1>
                 <h2>Pick one you don't like: {this.props.category}</h2>
-                <form autoComplete="off" onSubmit={this.handleSubmit}>
-
-                    <input type="text" name="choice" value={this.state.choice} onChange={this.onChange} placeholder="Enter a choice"/>
-
-                 </form>
                  <ul>
                      {this.props.choices.map(c =>(
-                        <StrikeOut key={c.id} {...c}/>
+                         <li key={c.id} className= {c.status ? '' : 'complete'} onClick={() => this.changeStatus(c.id)}>
+                         {c.choice}
+                      </li>
                        
                     ))}
                 </ul>
@@ -53,4 +54,4 @@ function MapStateToProps(appState) {
 }
 
 
-export default connect(MapStateToProps)(AddChoices) 
+export default connect(MapStateToProps)(Remove) 
