@@ -23,7 +23,7 @@ class Step extends Component {
 
 export function mapStateToProps(appState){
     return {
-        step: appState.listreducer.step
+        step: appState.listReducer.step
     }
 } 
 

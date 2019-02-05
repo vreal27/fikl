@@ -1,10 +1,7 @@
 import React, { Component } from 'react'
-import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
-import { postChoices } from '../actions/fikl'
+import { postChoices, nextTurn } from '../actions/fikl'
 import '../styles/ElimItem.css'
-
-
 
 
 class AddChoices extends Component {
@@ -18,7 +15,9 @@ class AddChoices extends Component {
 
     handleSubmit = (e) => {
         e.preventDefault()
-        postChoices((this.state.choice))
+        postChoices((this.state.choice)).then(() => {
+            nextTurn(this.state.username)
+        })
         this.setState({
             choice: ''
         })
@@ -28,7 +27,7 @@ class AddChoices extends Component {
 
         return (
             <div>
-                <h1>{this.props.match.params.roomcode}</h1>
+                <h1>{this.props.roomcode}</h1>
                 <h2>Picking: {this.props.category}</h2>
                 <form autoComplete="off" onSubmit={this.handleSubmit}>
 
@@ -40,7 +39,6 @@ class AddChoices extends Component {
                         <li key={c.id}>{c.choice}</li>
                     ))}
                 </ul>
-                <Link to={`/${this.props.match.params.roomcode}/remove`}>Hello</Link>
             </div>
         )
 
@@ -50,8 +48,10 @@ class AddChoices extends Component {
 
 function MapStateToProps(appState) {
     return {
+        username: appState.listReducer.username,
         choices: appState.listReducer.choices,
         category: appState.listReducer.category,
+        roomcode: appState.listReducer.roomcode,
         step: appState.listReducer.step
     }
 }

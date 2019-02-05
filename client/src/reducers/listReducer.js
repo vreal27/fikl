@@ -1,6 +1,7 @@
 const initialState = {
   choices: [],
   category: '',
+  roomcode: '',
   username: '',
   step: ''
 }
@@ -14,6 +15,8 @@ export default function (state = initialState, action) {
       return {...state, category: action.payload}
     case 'SET_USERNAME':
       return {...state, username: action.payload}
+    case 'SET_CODE':
+      return {...state, roomcode: action.payload}
     case 'EDIT_STATUS':
       return {...state, choices: state.choices.map(c => {
         if(c.id === action.id){
@@ -21,6 +24,8 @@ export default function (state = initialState, action) {
         }
         return c
       })}
+    case 'NEXT_STEP':
+      return {...state, step: action.payload}
     case 'COMPLETE':
       return {...state, step: 'complete'}
     default:
