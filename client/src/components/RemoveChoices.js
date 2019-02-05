@@ -5,7 +5,7 @@ import '../styles/ElimItem.css'
 import StrikeOut from './ElimItem'
 
 
-class AddChoices extends Component {
+class Remove extends Component {
     state = {
         choice: ''
     }
@@ -26,7 +26,7 @@ class AddChoices extends Component {
         return (
             <div>
                 <h1>{this.props.match.params.roomcode}</h1>
-                <h2>Picking: {this.props.category}</h2>
+                <h2>Pick one you don't like: {this.props.category}</h2>
                 <form autoComplete="off" onSubmit={this.handleSubmit}>
 
                     <input type="text" name="choice" value={this.state.choice} onChange={this.onChange} placeholder="Enter a choice"/>
@@ -34,8 +34,8 @@ class AddChoices extends Component {
                  </form>
                  <ul>
                      {this.props.choices.map(c =>(
-                        // <StrikeOut key={c.id} {...c}/>
-                        <li key={c.id}>{c.choice}</li>
+                        <StrikeOut key={c.id} {...c}/>
+                       
                     ))}
                 </ul>
             </div>
@@ -54,4 +54,3 @@ function MapStateToProps(appState) {
 
 
 export default connect(MapStateToProps)(AddChoices) 
-
