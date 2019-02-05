@@ -15,21 +15,29 @@ export default function(server) {
     // Add/delete item
 
       socket.on('add item', user => {
-        users.forEach((u,i) => {
-          if(u.username === user) {
+        users.forEach((u, i) => {
+          if(u.username === user && u.step === "add") {
             users[i].isAdded = true
             users[i].step = "wait"
           }
         })
+        let checkUsers = users.filter(user => !user.isAdded)
+        if(checkUsers.length === 0) {
+          users[0].step = "delete"
+        }
       })
 
       socket.on('remove item', user => {
         users.forEach((u, i) => {
-          if(u.username === user) {
+          if(u.username === user && u.step === "delete") {
             users[i].isRemoved = true
             users[i].step = "wait"
           }
         })
+        let checkUsers = users.filter(user => !user.isRemoved)
+        if(checkUsers.length === 1) {
+          socket.emit('complete')
+        }
       })
 
     // Category
