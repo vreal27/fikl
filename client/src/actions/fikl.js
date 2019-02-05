@@ -41,12 +41,13 @@ socket.on('set category', category => {
 })
 
 export function setUsername(username) {
+  store.dispatch({
+    type: 'SET_USERNAME',
+    payload: username
+  })
   socket.emit('set username', username)
 }
 
-socket.on('set category', username => {
-  store.dispatch({
-    type: "SET_USERNAME",
-    payload: username
-  })
+socket.on('set username', username => {
+  socket.emit('new user', username)
 })
