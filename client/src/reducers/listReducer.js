@@ -2,7 +2,8 @@ const initialState = {
   choices: [],
   category: '',
   username: '',
-  step: ''
+  step: '',
+  messages: []
 }
 
 export default function (state = initialState, action) {
