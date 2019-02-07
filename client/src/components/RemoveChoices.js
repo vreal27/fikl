@@ -1,35 +1,22 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { postChoices, editStatus } from '../actions/fikl';
+import { editStatus, nextTurn } from '../actions/fikl';
 import '../styles/ElimItem.css'
 
 
 
 class Remove extends Component {
-    state = {
-        choice: ''
-    }
-
-    onChange = (e) => {
-        this.setState({[e.target.name]: e.target.value})
-    }
-
-    handleSubmit = (e) => {
-        e.preventDefault()
-        postChoices((this.state.choice))
-        this.setState({
-            choice: ''
-        })
-    }
 
     changeStatus = (id) => {
-        editStatus(id)
+        editStatus(id).then(() => {
+            nextTurn(this.props.username)
+        })
     }
 
     render() {
         return (
             <div>
-                <h1>{this.props.match.params.roomcode}</h1>
+                <h1>{this.props.roomcode}</h1>
                 <h2>Pick one you don't like: {this.props.category}</h2>
                  <ul>
                      {this.props.choices.map(c =>(
@@ -48,6 +35,8 @@ class Remove extends Component {
 
 function MapStateToProps(appState) {
     return {
+        username: appState.listReducer.username,
+        roomcode: appState.listReducer.roomcode,
         choices: appState.listReducer.choices,
         category: appState.listReducer.category
     }

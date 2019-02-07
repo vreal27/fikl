@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { postChoices, nextTurn } from '../actions/fikl'
+import { addItem, nextTurn } from '../actions/fikl'
 import '../styles/ElimItem.css'
 
 
@@ -15,8 +15,9 @@ class AddChoices extends Component {
 
     handleSubmit = (e) => {
         e.preventDefault()
-        postChoices((this.state.choice)).then(() => {
-            nextTurn(this.state.username)
+        addItem(this.props.username, this.state.choice, this.props.roomcode)
+        .then(() => {
+            nextTurn(this.props.username)
         })
         this.setState({
             choice: ''
@@ -35,6 +36,7 @@ class AddChoices extends Component {
 
                  </form>
                  <ul>
+                     {console.log('rendertest', this.props.choices)}
                      {this.props.choices.map(c =>(
                         <li key={c.id}>{c.choice}</li>
                     ))}

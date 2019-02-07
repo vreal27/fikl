@@ -1,10 +1,11 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { joinRoom } from '../actions/fikl'
+import { joinRoom, setUsername } from '../actions/fikl'
 
 class JoinRoom extends Component {
     state = {
-        code: ""
+        code: "",
+        username: ""
     }
 
     handleChange = (e) => {
@@ -16,7 +17,8 @@ class JoinRoom extends Component {
     handleSubmit = (e) => {
         e.preventDefault()
         joinRoom(this.state.code)
-        this.props.history.push(`/${this.state.code}/add`)
+        setUsername(this.state.username)
+        this.props.history.push(`/${this.state.code}`)
     }
 
     render() {
@@ -27,6 +29,12 @@ class JoinRoom extends Component {
                         type="text"
                         name="code"
                         value={this.state.code}
+                        onChange={this.handleChange}
+                    />
+                    <input 
+                        type="text"
+                        name="username"
+                        value={this.state.username}
                         onChange={this.handleChange}
                     />
                     <button type="submit">Join!</button>

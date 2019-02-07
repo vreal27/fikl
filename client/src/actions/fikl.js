@@ -5,26 +5,48 @@ import shortId from 'shortid'
 
 axios.defaults.baseURL = '/api'
 
-const socket = io.connect('localhost:3001')
+const socket = io.connect('http://10.68.0.181:3001')
 
-export function postChoices(choice) {
+export function postChoices(choice, code) {
   var promise = new Promise((resolve, reject) => {
     store.dispatch({
       type: 'POST_CHOICE',
       choiceList: {
         id: shortId.generate(),
         choice: choice,
-        status: true
+        status: true,
+        code: code
       }
     })
-
     resolve()
   })
 
   return promise
 }
 
+socket.on('display items', items => {
+  store.dispatch({
+    type:'POST_CHOICE',
+    choiceList: items
+  })
+})
+
+export function addItem(username, item, code) {
+  var promise = new Promise((resolve, reject) => {
+    let itemObj = {
+      id: shortId.generate(),
+      choice: item,
+      status: true,
+      code: code
+    }
+    socket.emit('add item', username, itemObj, code)
+    resolve()
+  })
+  return promise
+}
+
 export function nextTurn(username) {
+  console.log('action', username)
   socket.emit('next turn', username)
 }
 

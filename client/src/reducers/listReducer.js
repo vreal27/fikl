@@ -12,7 +12,8 @@ export default function (state = initialState, action) {
   switch (action.type) {
     // add actions here
     case 'POST_CHOICE':
-      return {...state, choices: [...state.choices, action.choiceList]}
+      console.log('reducer', action.payload)
+      return {...state, choices: [...state.choices, action.payload]}
     case 'SET_CATEGORY':
       return {...state, category: action.payload}
     case 'SET_USERNAME':
