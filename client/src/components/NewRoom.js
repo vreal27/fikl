@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { joinRoom, setCategory, setUsername } from '../actions/fikl'
 
@@ -29,7 +28,7 @@ class NewRoom extends Component {
             username: '',
             category: ''
         })
-        this.props.history.push(`/${roomcode}/add`)
+        this.props.history.push(`/${roomcode}`)
     }
 
     render() {

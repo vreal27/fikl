@@ -8,7 +8,6 @@ import Start from './Start'
 import NewRoom from './NewRoom'
 import JoinRoom from './JoinRoom'
 
-
 class App extends Component {
   render() {
     return (

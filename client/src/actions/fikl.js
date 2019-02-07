@@ -5,27 +5,46 @@ import shortId from 'shortid'
 
 axios.defaults.baseURL = '/api'
 
-const socket = io.connect()
+const socket = io.connect('localhost:3001')
 
-export function postChoices(choice, username) {
-  store.dispatch({
-    type: 'POST_CHOICE',
-    choiceList: {
-      id: shortId.generate(),
-      choice: choice,
-      status: true
-    }
-  }).then(resp => {
-    socket.emit('next turn', username)
+export function postChoices(choice) {
+  var promise = new Promise((resolve, reject) => {
+    store.dispatch({
+      type: 'POST_CHOICE',
+      choiceList: {
+        id: shortId.generate(),
+        choice: choice,
+        status: true
+      }
+    })
+
+    resolve()
   })
+
+  return promise
 }
 
-export function editStatus(id, username){
+export function nextTurn(username) {
+  socket.emit('next turn', username)
+}
+
+export function editStatus(id){
+  var promise = new Promise((resolve, reject) => {
+    store.dispatch({
+      type: 'EDIT_STATUS',
+      id: id
+    })
+
+    resolve()
+  })
+
+  return promise
+}
+
+export function setCode(code) {
   store.dispatch({
-    type: 'EDIT_STATUS',
-    id: id
-  }).then(resp => {
-    socket.emit('next turn', username)
+    type: 'SET_CODE',
+    payload: code
   })
 }
 
@@ -56,6 +75,13 @@ socket.on('set username', username => {
   socket.emit('new user', username)
 })
 
+socket.on('next step', step => {
+  store.dispatch({
+    type: 'NEXT_STEP',
+    payload: step
+  })
+})
+
 socket.on('complete', () => {
   store.dispatch({
     type: 'COMPLETE'
@@ -71,10 +97,19 @@ export function addMessage(message) {
     message: message.message
   })
 
-  socket.on('new message', (message) => {
-    store.dispatch({
-      type: 'ADD_MESSAGE',
-      message: message
-    })
-  })
+ 
 }
+
+socket.on('new message', (message) => {
+  store.dispatch({
+    type: 'ADD_MESSAGE',
+    message: message
+  })
+})
+
+socket.on('pass users', (users) => {
+  store.dispatch({
+    type: 'PASS_USERS',
+    payload: users
+  })
+})

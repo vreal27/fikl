@@ -2,3 +2,18 @@
     text-decoration: line-through;
     cursor: pointer;
 }
+
+.balls {
+    display: flex;
+    align-items: stretch;
+    height: 75px;
+    position: relative;
+
+}
+    
+    .ball {
+      background: black;
+      border-radius: 50%;
+      margin-right: 15px;
+      flex: 0 0 75px;
+  }
