@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { joinRoom, setCategory, setUsername } from '../actions/fikl'
+import { joinRoom, setCategory, setUsername, setCode } from '../actions/fikl'
 
 const roomcode = Math.random().toString(36).toUpperCase().substr(2, 4)
 
@@ -11,6 +11,7 @@ class NewRoom extends Component {
     }
 
     componentDidMount() {
+        setCode(roomcode)
         joinRoom(roomcode)
     }
 
