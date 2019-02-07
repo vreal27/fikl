@@ -153,7 +153,18 @@ export default function(server) {
           isRemoved: false
         })
       }
+      socket.emit('pass users', users)
     })
+
+    // chat room
+    socket.join('main')
+    socket.on('new message', (message) => {
+      io.to(message.roomcode).emit('new message', message)
+
+    })
+
+    
+
     
 
     console.log('User has connected to socket server')

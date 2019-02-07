@@ -3,7 +3,9 @@ const initialState = {
   category: '',
   roomcode: '',
   username: '',
-  step: ''
+  step: '',
+  messages: [],
+  users: []
 }
 
 export default function (state = initialState, action) {
@@ -29,6 +31,8 @@ export default function (state = initialState, action) {
       return {...state, step: action.payload}
     case 'COMPLETE':
       return {...state, step: 'complete'}
+    case 'PASS_USERS':
+      return {...state, users: action.payload}
     default:
       return state
   }

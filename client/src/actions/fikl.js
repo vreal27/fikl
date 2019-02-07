@@ -109,3 +109,29 @@ socket.on('complete', () => {
     type: 'COMPLETE'
   })
 })
+
+
+export function addMessage(message) {
+  const username = store.getState().listReducer.username
+
+  socket.emit('new message', {
+    username: username,
+    message: message.message
+  })
+
+ 
+}
+
+socket.on('new message', (message) => {
+  store.dispatch({
+    type: 'ADD_MESSAGE',
+    message: message
+  })
+})
+
+socket.on('pass users', (users) => {
+  store.dispatch({
+    type: 'PASS_USERS',
+    payload: users
+  })
+})
