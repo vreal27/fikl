@@ -7,28 +7,28 @@ import { connect } from 'react-redux'
 
 class Waiting extends Component {
     state = {
-        users: [1,2,3,4,5]
+        users: []
     }
 
 
     shuffle = () => {
         this.setState({
-            users: shuffle(this.state.users)
+            users: shuffle(this.props.users)
         })
     }
 
     componentDidMount(){
-        setInterval(this.shuffle, 2000)
+        setInterval(this.shuffle, 1000)
     }
 
     render() {
         return (
-            <Flipper flipKey={this.state.users.join("")}>
+            <Flipper flipKey={this.state.users.username}>
                 <h1>Waiting on ...</h1>
                 <ul className="list">
                 {this.state.users.map(d  => (
-                    <Flipped key={'item' + d} flipId={d}>
-                    <li>{d}</li>
+                    <Flipped key={'item' + d.username} flipId={d.username}>
+                    <li>{d.username}</li>
                     </Flipped>
                 ))}
                 </ul>
