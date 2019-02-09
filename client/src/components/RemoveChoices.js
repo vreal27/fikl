@@ -16,11 +16,11 @@ class Remove extends Component {
     render() {
         return (
             <div>
-                <h1>{this.props.roomcode}</h1>
-                <h2>Pick one you don't like: {this.props.category}</h2>
+                <h1>{this.props.room.code}</h1>
+                <h2>Pick one you don't like: {this.props.room.category}</h2>
                  <ul>
-                     {this.props.choices.map(c =>(
-                         <li key={c.id} className= {c.status ? '' : 'complete'} onClick={() => this.changeStatus(c.id)}>
+                     {this.props.room.items.map((c, i) =>(
+                         <li key={`${c.id}${i}`} className= {c.status ? '' : 'complete'} onClick={() => this.changeStatus(c.id)}>
                          {c.choice}
                       </li>
                        
@@ -34,11 +34,11 @@ class Remove extends Component {
 
 
 function MapStateToProps(appState) {
+    console.log('test', appState.listReducer.room)
     return {
         username: appState.listReducer.username,
-        roomcode: appState.listReducer.roomcode,
         choices: appState.listReducer.choices,
-        category: appState.listReducer.category
+        room: appState.listReducer.room
     }
 }
 

@@ -16,9 +16,11 @@ class JoinRoom extends Component {
 
     handleSubmit = (e) => {
         e.preventDefault()
-        joinRoom(this.state.code)
-        setUsername(this.state.username)
-        this.props.history.push(`/${this.state.code}`)
+        joinRoom(this.state.code).then(code => {
+            setUsername(this.state.username, code).then(code => {
+                this.props.history.push(`/${code}`)
+            })
+        })
     }
 
     render() {
@@ -30,12 +32,14 @@ class JoinRoom extends Component {
                         name="code"
                         value={this.state.code}
                         onChange={this.handleChange}
+                        placeholder="Room code"
                     />
                     <input 
                         type="text"
                         name="username"
                         value={this.state.username}
                         onChange={this.handleChange}
+                        placeholder="Username"
                     />
                     <button type="submit">Join!</button>
                 </form>
@@ -44,8 +48,12 @@ class JoinRoom extends Component {
     }
 }
 
-function mapStateToProps(appState) {
-    
+function mapStatetoProps(appState){
+    return {
+        category: appState.listReducer.category,
+        room: appState.listReducer.room
+    }
 }
 
-export default connect(mapStateToProps)(JoinRoom)
+
+export default connect(mapStatetoProps)(JoinRoom)
