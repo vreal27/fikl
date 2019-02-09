@@ -1,0 +1,13 @@
+html {
+    box-sizing: border-box;
+    background-color: lightgreen;
+}
+*, *:before, *:after {box-sizing: inherit}
+
+.startcontainer {
+    border: solid 1px black; 
+    display: flex;
+    flex-direction: column;
+    text-align: center; 
+    padding: 20px;
+}

@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
+import '../styles/Start.css'
 
 class Start extends Component {
   componentDidMount() {
@@ -9,7 +10,7 @@ class Start extends Component {
   
   render() {
     return (
-      <div>
+      <div className="startcontainer">
         <h1>Fikl</h1>
         <p>Are you starting a new room?</p>
         <span className="startlink"><Link to='/newroom'>Start a New</Link></span>

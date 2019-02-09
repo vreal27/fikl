@@ -37,8 +37,8 @@ class AddChoices extends Component {
                  </form>
                  <ul>
                      {console.log('rendertest', this.props.choices)}
-                     {this.props.choices.map(c =>(
-                        <li key={c.id}>{c.choice}</li>
+                     {this.props.choices.map((c, i) =>(
+                        <li key={"choice" + i}>{c.choice}</li>
                     ))}
                 </ul>
             </div>
