@@ -1,38 +1,44 @@
 const initialState = {
-  choices: [],
-  category: '',
-  roomcode: '',
+  room: {
+    items:[],
+    users: []
+  },
   username: '',
   step: '',
-  messages: [],
-  users: []
+  messages: []
 }
 
 export default function (state = initialState, action) {
   switch (action.type) {
     // add actions here
+    case 'NEW_ROOM':
+      return {...state, room: action.payload}
     case 'POST_CHOICE':
-      console.log('reducer', action.payload)
       return {...state, choices: [...state.choices, action.payload]}
     case 'SET_CATEGORY':
       return {...state, category: action.payload}
     case 'SET_USERNAME':
       return {...state, username: action.payload}
-    case 'SET_CODE':
-      return {...state, roomcode: action.payload}
+    case 'UPDATE_ROOM':
+      return {...state, room: action.payload}
     case 'EDIT_STATUS':
-      return {...state, choices: state.choices.map(c => {
-        if(c.id === action.id){
-          c.status = !c.status
+      return {...state,
+        room: {
+          ...state.room,
+          items: state.room.items.map(c => {
+            if (c.id === action.id) {
+              c.status = !c.status
+            }
+            return c
+          })
         }
-        return c
-      })}
+      }
     case 'NEXT_STEP':
       return {...state, step: action.payload}
     case 'COMPLETE':
       return {...state, step: 'complete'}
     case 'PASS_USERS':
-      return {...state, users: action.payload}
+      return {...state, room: action.payload}
     default:
       return state
   }
