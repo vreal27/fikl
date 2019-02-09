@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { addItem, nextTurn } from '../actions/fikl'
+import { addItem, doneAdding } from '../actions/fikl'
 import '../styles/ElimItem.css'
 
 
@@ -15,30 +15,39 @@ class AddChoices extends Component {
 
     handleSubmit = (e) => {
         e.preventDefault()
-        addItem(this.props.username, this.state.choice, this.props.roomcode)
+        addItem(this.props.username, this.state.choice, this.props.room.code)
         .then(() => {
-            nextTurn(this.props.username)
-        })
-        this.setState({
-            choice: ''
+            this.setState({
+                choice: ''
+            })
         })
     }
 
-    render() {
+    sayDone = (e) => {
+        e.preventDefault()
+        doneAdding(this.props.room.code)
+    }
 
+    render() {
         return (
             <div>
-                <h1>{this.props.roomcode}</h1>
-                <h2>Picking: {this.props.category}</h2>
+                <h1>{this.props.room.code}</h1>
+                <h2>Picking: {this.props.room.category}</h2>
                 <form autoComplete="off" onSubmit={this.handleSubmit}>
 
-                    <input type="text" name="choice" value={this.state.choice} onChange={this.onChange} placeholder="Enter a choice"/>
+                    <input 
+                        type="text" 
+                        name="choice" 
+                        value={this.state.choice} 
+                        onChange={this.onChange} 
+                        placeholder="Enter a choice"
+                    />
 
                  </form>
+                 <button onClick={this.sayDone}>I'm done adding!</button>
                  <ul>
-                     {console.log('rendertest', this.props.choices)}
-                     {this.props.choices.map((c, i) =>(
-                        <li key={"choice" + i}>{c.choice}</li>
+                     {this.props.room.items.map((c, i) =>(
+                        <li key={`${c.id}${i}`}>{c.choice}</li>
                     ))}
                 </ul>
             </div>
@@ -51,9 +60,7 @@ class AddChoices extends Component {
 function MapStateToProps(appState) {
     return {
         username: appState.listReducer.username,
-        choices: appState.listReducer.choices,
-        category: appState.listReducer.category,
-        roomcode: appState.listReducer.roomcode,
+        room: appState.listReducer.room,
         step: appState.listReducer.step
     }
 }

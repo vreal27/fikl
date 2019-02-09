@@ -1,10 +1,10 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { joinRoom, setCategory, setUsername, setCode } from '../actions/fikl'
 import { Flipper, Flipped } from 'react-flip-toolkit'
 import shuffle from 'lodash.shuffle'
 
 const roomcode = Math.random().toString(36).toUpperCase().substr(2, 4)
+import { newRoom, setUsername } from '../actions/fikl'
 
 
 
@@ -18,9 +18,8 @@ class NewRoom extends Component {
     
 
     componentDidMount() {
-        setCode(roomcode)
-        joinRoom(roomcode)
-        setInterval(this.shuffle, 2000)
+        // setCode(roomcode)
+        // joinRoom(roomcode)
     }
 
     handleChange = (e) => {
@@ -32,13 +31,16 @@ class NewRoom extends Component {
     handleSubmit = (e) => {
         
         e.preventDefault()
-        setCategory(this.state.category)
-        setUsername(this.state.username)
+        let uName = this.state.username
+        newRoom(this.state.category).then(code => {
+            setUsername(uName, code).then(code => {
+                this.props.history.push(`/${code}`)
+            })
+        })
         this.setState({
             username: '',
             category: ''
         })
-        this.props.history.push(`/${roomcode}`)
     }
 
     pickRandom = (e) => {
@@ -68,7 +70,7 @@ class NewRoom extends Component {
         
         return (
             <div>
-                <h1>{roomcode}</h1>
+                {/* <h1>{roomcode}</h1> */}
                 <form onSubmit={this.handleSubmit} autoComplete="off">
                     <input
                         type="text"
@@ -109,7 +111,7 @@ class NewRoom extends Component {
 
 function mapStateToProps(appState) {
     return {
-        category: appState.category
+        room: appState.listReducer.room
     }
 }
 

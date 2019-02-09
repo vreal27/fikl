@@ -1,12 +1,8 @@
 import React, { Component } from 'react'
-import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 import '../styles/Start.css'
 
 class Start extends Component {
-  componentDidMount() {
-    
-  }
   
   render() {
     return (
@@ -21,10 +17,4 @@ class Start extends Component {
   }
 }
 
-function mapStateToProps(appState) {
-  return {
-    example: appState.listReducer.example
-  }
-}
-
-export default connect(mapStateToProps)(Start)
+export default Start
