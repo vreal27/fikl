@@ -56,21 +56,10 @@ export default function(server) {
           rooms.find(room => room.code === code).items.push(item)
           //emit to the particular socket that sent the item
           io.to(code).emit('update room', currRoom)
-          // //then if we're not the last guy
-          // if(i < users.length - 1) {
-          //   //tell the next guy to add
-          //   io.to(users[i + 1].id).emit('next step', "add")
-          // } else {
-          //   //otherwise tell the first guy to remove
-          //   io.to(users[0].id).emit('next step', "remove")
-          // }
+       
         }
       })
-      // let checkUsers = rooms.users.filter(user => !user.isAdded)
-      // console.log('check users[0]', users)
-      // if(checkUsers.length === 0) {
-      //   users[0].step = "remove"
-      // }
+     
     })
 
     socket.on('done adding', (code) => {
@@ -90,6 +79,8 @@ export default function(server) {
             socket.emit('next step', "wait")
             //emit to the first user to go to remove
             const firstUser = rooms.find(room => room.code === code).users[0].id
+            // changes first user's status to true
+            rooms.find(room => room.code === code).users[0].myTurn = true
             io.to(firstUser).emit('next step', "remove")
           }
       })

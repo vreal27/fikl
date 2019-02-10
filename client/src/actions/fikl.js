@@ -54,7 +54,7 @@ socket.on('update room', room => {
 
 export function nextTurn(username, code) {
   console.log('action', username)
-  socket.emit('next turn', username, code)
+  socket.emit('next turn', {username: username, code: code})
 }
 
 export function editStatus(id){

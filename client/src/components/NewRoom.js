@@ -2,9 +2,9 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { Flipper, Flipped } from 'react-flip-toolkit'
 import shuffle from 'lodash.shuffle'
-
-const roomcode = Math.random().toString(36).toUpperCase().substr(2, 4)
 import { newRoom, setUsername } from '../actions/fikl'
+const roomcode = Math.random().toString(36).toUpperCase().substr(2, 4)
+
 
 
 
