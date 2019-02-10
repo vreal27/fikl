@@ -6,10 +6,6 @@ export default function(server) {
   const rooms = []
 
   io.on('connection', function(socket){
-
-    const users = []
-
-
     //create new room
     socket.on('new room', category => {
       //create roomcode
@@ -84,22 +80,15 @@ export default function(server) {
       })
     })
 
-    socket.on('remove item', (user, code) => {
+    socket.on('remove item', ({user, code, id}) => {
       const currRoom = rooms.find(room => room.code === code)
-      currRoom.users.forEach((u, i) => {
-        if(u.username === user && u.step === "remove") {
-          users[i].isRemoved = true
-          users[i].step = "wait"
-          socket.emit('next step', "wait")
-          if(i < users.length - 1) {
-            socket.to(users[i + 1].id).emit('next step', "remove")
-          }
+      const currUser = currRoom.users.find(user => user.code === code)
+      currRoom.items.forEach((item, i) => {
+        if(currUser.username === user && currUser.myTurn === true && item.id === id) {
+          rooms.find(room => room.code === code).items[i].status = !item.status
         }
       })
-      let checkUsers = users.filter(user => !user.isRemoved)
-      if(checkUsers.length === 1) {
-        socket.emit('complete')
-      }
+      io.to(code).emit('update room', rooms.find(room => room.code === code))
     })
 
     
@@ -165,7 +154,7 @@ export default function(server) {
       //if we have exactly one not-crossed-out item remaining
       if(filterItems.length === 1) {
         //send to everyone in this person's roomcode that we're done here boys
-        io.to(users[currPerson].code).emit('complete')
+        io.to(currRoom.users[currPerson].code).emit('complete')
       } else {
         io.to(currRoom.users[nextPerson].id).emit('next step', "remove")
       }

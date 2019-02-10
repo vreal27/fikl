@@ -57,8 +57,9 @@ export function nextTurn(username, code) {
   socket.emit('next turn', {username: username, code: code})
 }
 
-export function editStatus(id){
+export function editStatus(user, id, code){
   var promise = new Promise((resolve, reject) => {
+    socket.emit('remove item', {user: user, id: id, code: code})
     store.dispatch({
       type: 'EDIT_STATUS',
       id: id
