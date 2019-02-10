@@ -8,8 +8,10 @@ import '../styles/ElimItem.css'
 class Remove extends Component {
 
     changeStatus = (id) => {
+        const thisUser = this.props.username
+        const thisRoom = this.props.room.code
         editStatus(id).then(() => {
-            nextTurn(this.props.username)
+            nextTurn(thisUser, thisRoom)
         })
     }
 

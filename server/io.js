@@ -56,21 +56,8 @@ export default function(server) {
           rooms.find(room => room.code === code).items.push(item)
           //emit to the particular socket that sent the item
           io.to(code).emit('update room', currRoom)
-          // //then if we're not the last guy
-          // if(i < users.length - 1) {
-          //   //tell the next guy to add
-          //   io.to(users[i + 1].id).emit('next step', "add")
-          // } else {
-          //   //otherwise tell the first guy to remove
-          //   io.to(users[0].id).emit('next step', "remove")
-          // }
         }
       })
-      // let checkUsers = rooms.users.filter(user => !user.isAdded)
-      // console.log('check users[0]', users)
-      // if(checkUsers.length === 0) {
-      //   users[0].step = "remove"
-      // }
     })
 
     socket.on('done adding', (code) => {
@@ -90,6 +77,8 @@ export default function(server) {
             socket.emit('next step', "wait")
             //emit to the first user to go to remove
             const firstUser = rooms.find(room => room.code === code).users[0].id
+            //changes first user's myTurn status to true
+            rooms.find(room => room.code === code).users[0].myTurn = true
             io.to(firstUser).emit('next step', "remove")
           }
       })
@@ -130,7 +119,7 @@ export default function(server) {
     // Chat room function
 
     // Change Turn
-    socket.on('next turn', (username, code) => {
+    socket.on('next turn', ({username, code}) => {
       let nextPerson = 0
       let currPerson = 0
       const currRoom = rooms.find(room => room.code === code)
@@ -139,26 +128,27 @@ export default function(server) {
         //if we're looking at the right user and the socket.id matches
         if(user.username === username && socket.id === user.id) {
           //if we're not on the last in the array
-          if(i < users.length - 1) {
+          if(i < rooms.find(room => room.code === code).users.length - 1) {
             //if it's the user's turn
             if(user.myTurn === true) {
               //emit to their socket to update the step on front-end
               socket.emit('next step', "remove")
               //it will no longer be their turn on the next loop
               //next loop happens when an item is removed
-              users[i].myTurn = false
+              rooms.find(room => room.code === code).users[i].myTurn = false
               //define who the next user will be
               //can't update it in the forEach loop, as it'd just set everyone
               //to .myTurn = true
               nextPerson = i + 1
               currPerson = i
+              console.log('next curr', nextPerson, currPerson)
             } else {
               //we're on the last in the array
               if(user.myTurn === true) {
                 //if it's the user's turn
                 //emit to their socket to update the step on front-end
                 socket.emit('next step', "remove")
-                users[i].myTurn = false
+                rooms.find(room => room.code === code).users[i].myTurn = false
                 //define who the next user will be
                 nextPerson = 0
                 currPerson = i
@@ -168,14 +158,16 @@ export default function(server) {
         }
       })
       //set the next person to take their turn
-      users[nextPerson].myTurn = true
-      io.to(users[currPerson].id).emit('next step', "wait")
+      rooms.find(room => room.code === code).users[nextPerson].myTurn = true
+      io.to(currRoom.users[currPerson].id).emit('next step', "wait")
       const thisRoom = rooms.find(room => room.code === code)
       const filterItems = thisRoom.items.filter(item => item.status === true)
       //if we have exactly one not-crossed-out item remaining
       if(filterItems.length === 1) {
         //send to everyone in this person's roomcode that we're done here boys
         io.to(users[currPerson].code).emit('complete')
+      } else {
+        io.to(currRoom.users[nextPerson].id).emit('next step', "remove")
       }
     })
 

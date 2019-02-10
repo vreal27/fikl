@@ -1,12 +1,8 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import { newRoom, setUsername } from '../actions/fikl'
 import { Flipper, Flipped } from 'react-flip-toolkit'
 import shuffle from 'lodash.shuffle'
-
-const roomcode = Math.random().toString(36).toUpperCase().substr(2, 4)
-import { newRoom, setUsername } from '../actions/fikl'
-
-
 
 class NewRoom extends Component {
     state = {
@@ -14,8 +10,6 @@ class NewRoom extends Component {
         category: '',
         preset: [`Food?`,`Movies?`,`Games?`,`Show?`]
     }
-
-    
 
     componentDidMount() {
         // setCode(roomcode)
