@@ -5,7 +5,7 @@ import shortId from 'shortid'
 
 axios.defaults.baseURL = '/api'
 
-const socket = io.connect('http://localhost:3001')
+const socket = io.connect('http://10.68.0.181:3001')
 
 export function postChoices(choice, code) {
   var promise = new Promise((resolve, reject) => {
@@ -54,7 +54,7 @@ socket.on('update room', room => {
 
 export function nextTurn(username, code) {
   console.log('action', username)
-  socket.emit('next turn', username, code)
+  socket.emit('next turn', {username: username, code: code})
 }
 
 export function editStatus(id){
