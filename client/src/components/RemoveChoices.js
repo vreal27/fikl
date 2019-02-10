@@ -10,7 +10,7 @@ class Remove extends Component {
     changeStatus = (id) => {
         const thisUser = this.props.username
         const thisRoom = this.props.room.code
-        editStatus(id).then(() => {
+        editStatus(thisUser, id, thisRoom).then(() => {
             nextTurn(thisUser, thisRoom)
         })
     }
