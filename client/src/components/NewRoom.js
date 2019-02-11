@@ -3,17 +3,13 @@ import { connect } from 'react-redux'
 import { newRoom, setUsername } from '../actions/fikl'
 import { Flipper, Flipped } from 'react-flip-toolkit'
 import shuffle from 'lodash.shuffle'
+import '../styles/NewRoom.css'
 
 class NewRoom extends Component {
     state = {
         username: '',
         category: '',
-        preset: [`Food?`,`Movies?`,`Games?`,`Show?`]
-    }
-
-    componentDidMount() {
-        // setCode(roomcode)
-        // joinRoom(roomcode)
+        preset: [`Food?`,`Movies?`,`Games?`,`Show?`, `Ghouls?`]
     }
 
     handleChange = (e) => {
@@ -41,7 +37,6 @@ class NewRoom extends Component {
         e.preventDefault()
         let item = this.state.preset.length
         const pick = Math.floor(Math.random() * item)
-        console.log(this.state.preset[pick])
         this.setState({
             category: this.state.preset[pick]
         })
@@ -63,15 +58,16 @@ class NewRoom extends Component {
     render() {
         
         return (
-            <div>
+            <div id="newRoomContainer">
                 {/* <h1>{roomcode}</h1> */}
-                <form onSubmit={this.handleSubmit} autoComplete="off">
+                <form onSubmit={this.handleSubmit} autoComplete="off" className="newRoomForm">
                     <input
                         type="text"
                         onChange={this.handleChange}
                         name="username"
                         value={this.state.username}
                         placeholder="Who're you?"
+                        className="newRoomInput"
                     />
                     <input
                         type="text"
@@ -79,12 +75,13 @@ class NewRoom extends Component {
                         name="category"
                         value={this.state.category}
                         placeholder="What're we picking?"
+                        className="newRoomInput"
                     />
-                    <button type="submit">Everybody's In!</button>
+                    <button type="submit" className="newRoomButton">Let's get this started!</button>
                 </form>
 
                 <Flipper flipKey={this.state.preset.join("")}>
-                <form onSubmit={this.pickRandom}>
+                <form onSubmit={this.pickRandom} className="newRoomForm">
                     <ul className="randomcat">
                         {this.state.preset.map(choice => (
                             <Flipped key={'choice' + choice} flipId={choice}> 
@@ -94,7 +91,7 @@ class NewRoom extends Component {
                         ))}
                     </ul>
                     <h2>Can't decide on what to do?</h2>
-                    <button type="submit">Pick for me!</button>
+                    <button type="submit" className="newRoomButton">Pick for me!</button>
                 </form>
                 </Flipper>
                 {/* <span><Link to={`/${roomcode}`}>Everybody's In!</Link></span> */}
