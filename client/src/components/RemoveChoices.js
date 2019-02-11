@@ -36,7 +36,6 @@ class Remove extends Component {
 
 
 function MapStateToProps(appState) {
-    console.log('test', appState.listReducer.room)
     return {
         username: appState.listReducer.username,
         choices: appState.listReducer.choices,

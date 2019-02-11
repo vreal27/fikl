@@ -53,13 +53,12 @@ socket.on('update room', room => {
 })
 
 export function nextTurn(username, code) {
-  console.log('action', username)
   socket.emit('next turn', {username: username, code: code})
 }
 
 export function editStatus(user, id, code){
   var promise = new Promise((resolve, reject) => {
-    socket.emit('remove item', {user: user, id: id, code: code})
+    socket.emit('remove item', {user: user, code: code, id: id})
     store.dispatch({
       type: 'EDIT_STATUS',
       id: id
@@ -114,7 +113,6 @@ export function setCategory(category) {
     socket.emit('set category', category)
 
     socket.on('set category', category => {
-      console.log('category action', category)
       store.dispatch({
         type: "SET_CATEGORY",
         payload: category
