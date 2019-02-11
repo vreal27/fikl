@@ -1,0 +1,40 @@
+.joincontainer {
+    border: solid 1px black; 
+    display: flex; 
+    flex-direction: column;
+   justify-content: center;
+   text-align: center;
+    width: 400px;
+    margin: 30px auto;
+    padding: 20px;
+}
+
+.joinform {
+    display: flex;
+    flex-direction: column;
+    width: 200px;
+    margin: 0 auto;
+}
+
+.joinform button {
+    background: none; 
+    border: solid 1px black; 
+    border-radius: 20px; 
+    height: 30px;
+}
+
+.enterinfo {
+    margin: 10px;
+    height: 30px;
+    border-radius: 20px;
+    padding: 10px;
+    border: solid 1px black;
+    background: none; 
+    outline: none; 
+}
+
+.enterinfo:hover{
+    background: rgb(182, 240, 182)
+}
+
+
