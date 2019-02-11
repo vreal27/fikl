@@ -6,10 +6,6 @@ export default function(server) {
   const rooms = []
 
   io.on('connection', function(socket){
-
-    const users = []
-
-
     //create new room
     socket.on('new room', category => {
       //create roomcode
@@ -84,22 +80,15 @@ export default function(server) {
       })
     })
 
-    socket.on('remove item', (user, code) => {
+    socket.on('remove item', ({user, code, id}) => {
       const currRoom = rooms.find(room => room.code === code)
-      currRoom.users.forEach((u, i) => {
-        if(u.username === user && u.step === "remove") {
-          users[i].isRemoved = true
-          users[i].step = "wait"
-          socket.emit('next step', "wait")
-          if(i < users.length - 1) {
-            socket.to(users[i + 1].id).emit('next step', "remove")
-          }
+      const currUser = currRoom.users.find(u => u.username === user)
+      currRoom.items.forEach((item, i) => {
+        if(currUser.username === user && currUser.myTurn === true && item.id === id) {
+          rooms.find(room => room.code === code).items[i].status = !item.status
+          io.to(code).emit('update room', rooms.find(room => room.code === code))
         }
       })
-      let checkUsers = users.filter(user => !user.isRemoved)
-      if(checkUsers.length === 1) {
-        socket.emit('complete')
-      }
     })
 
     
@@ -141,18 +130,17 @@ export default function(server) {
               //to .myTurn = true
               nextPerson = i + 1
               currPerson = i
-              console.log('next curr', nextPerson, currPerson)
-            } else {
-              //we're on the last in the array
-              if(user.myTurn === true) {
-                //if it's the user's turn
-                //emit to their socket to update the step on front-end
-                socket.emit('next step', "remove")
-                rooms.find(room => room.code === code).users[i].myTurn = false
-                //define who the next user will be
-                nextPerson = 0
-                currPerson = i
-              }
+            } 
+          } else {
+            //we're on the last in the array
+            if(user.myTurn === true) {
+              //if it's the user's turn
+              //emit to their socket to update the step on front-end
+              socket.emit('next step', "remove")
+              rooms.find(room => room.code === code).users[i].myTurn = false
+              //define who the next user will be
+              nextPerson = 0
+              currPerson = i
             }
           }
         }
@@ -165,7 +153,7 @@ export default function(server) {
       //if we have exactly one not-crossed-out item remaining
       if(filterItems.length === 1) {
         //send to everyone in this person's roomcode that we're done here boys
-        io.to(users[currPerson].code).emit('complete')
+        io.to(currRoom.users[currPerson].code).emit('complete')
       } else {
         io.to(currRoom.users[nextPerson].id).emit('next step', "remove")
       }
@@ -173,14 +161,11 @@ export default function(server) {
 
     // Username
     socket.on('set username', ({username, code}) => {
-      console.log('newroom', rooms)
-      console.log('code', code)
       socket.emit('set username', {username: username, code: code})
     })
     
     // Add user
     socket.on('new user', ({username, code}) => {
-      console.log('new user', username)
       rooms.find(room => room.code === code).users.push({
         username: username,
         id: socket.id,
@@ -188,7 +173,6 @@ export default function(server) {
         doneAdding: false,
         code: code
       })
-      console.log('testo', rooms, username)
       let thisRoom = rooms.find(room => room.code === code)
       socket.emit('next step', "add")
       socket.emit('pass users', thisRoom)

@@ -10,7 +10,7 @@ class Remove extends Component {
     changeStatus = (id) => {
         const thisUser = this.props.username
         const thisRoom = this.props.room.code
-        editStatus(id).then(() => {
+        editStatus(thisUser, id, thisRoom).then(() => {
             nextTurn(thisUser, thisRoom)
         })
     }
@@ -36,7 +36,6 @@ class Remove extends Component {
 
 
 function MapStateToProps(appState) {
-    console.log('test', appState.listReducer.room)
     return {
         username: appState.listReducer.username,
         choices: appState.listReducer.choices,

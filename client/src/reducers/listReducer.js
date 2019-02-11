@@ -20,6 +20,7 @@ export default function (state = initialState, action) {
     case 'SET_USERNAME':
       return {...state, username: action.payload}
     case 'UPDATE_ROOM':
+      console.log('reducer', action.payload)
       return {...state, room: action.payload}
     case 'EDIT_STATUS':
       return {...state,
