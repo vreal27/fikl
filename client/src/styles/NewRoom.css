@@ -1,0 +1,52 @@
+html {box-sizing: border-box;}
+*, *:before, *:after {box-sizing: inherit;}
+
+#newRoomContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    width: 60%;
+    margin: 0 auto;
+}
+
+.newRoomForm {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.newRoomForm ul li {
+    list-style: none;
+}
+
+.newRoomInput {
+    background: none;
+    border: 1px solid black;
+    border-radius: 20px;
+    padding: 10px;
+    width: 30%;
+}
+
+.newRoomInput:focus {
+    outline: none;
+    background: rgb(182, 240, 182);
+}
+
+.newRoomButton {
+    background: none;
+    border: 1px solid black;
+    border-radius: 20px;
+    padding: 10px;
+    width: 30%;
+}
+
+.newRoomButton:hover {
+    background: rgb(182, 240, 182);
+    cursor: pointer;
+}
+
+.newRoomButton:focus {
+    outline: none;
+    background: rgb(182, 240, 182);
+}
