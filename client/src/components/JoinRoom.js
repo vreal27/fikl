@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { joinRoom, setUsername } from '../actions/fikl'
+import '../styles/JoinRoom.css'
 
 class JoinRoom extends Component {
     state = {
@@ -25,9 +26,12 @@ class JoinRoom extends Component {
 
     render() {
         return (
-            <div>
-                <form onSubmit={this.handleSubmit} autoComplete="off">
+            <div className="joincontainer">
+                
+                <form onSubmit={this.handleSubmit} autoComplete="off" className="joinform">
+                <h1>Enter info to join!</h1>
                     <input 
+                        className="enterinfo"
                         type="text"
                         name="code"
                         value={this.state.code}
@@ -35,6 +39,7 @@ class JoinRoom extends Component {
                         placeholder="Room code"
                     />
                     <input 
+                        className="enterinfo"
                         type="text"
                         name="username"
                         value={this.state.username}

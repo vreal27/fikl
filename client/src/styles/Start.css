@@ -1,6 +1,7 @@
 html {
     box-sizing: border-box;
     background-color: lightgreen;
+    font-family: Helvetica, Arial, Helvetica, sans-serif;
 }
 *, *:before, *:after {box-sizing: inherit}
 
@@ -9,5 +10,19 @@ html {
     display: flex;
     flex-direction: column;
     text-align: center; 
-    padding: 20px;
+    padding: 40px;
+    margin: 30px auto;
+    width: 400px;
+}
+
+.startcontainer a {
+    color: black;
+    border: solid 1px black; 
+    padding: 10px;
+    text-decoration: none; 
+    border-radius: 20px;
+}
+
+.startcontainer a:hover {
+    background: rgb(182, 240, 182)
 }
