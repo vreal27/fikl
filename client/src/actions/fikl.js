@@ -5,7 +5,7 @@ import shortId from 'shortid'
 
 axios.defaults.baseURL = '/api'
 
-const socket = io.connect('http://localhost:3001')
+const socket = io.connect('http://10.68.0.181:3001')
 
 export function postChoices(choice, code) {
   var promise = new Promise((resolve, reject) => {
