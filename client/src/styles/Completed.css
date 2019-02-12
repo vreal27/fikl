@@ -1,0 +1,62 @@
+@import url(https://fonts.googleapis.com/css?family=Permanent+Marker);
+
+/* .completeContainer {
+    border: 1px solid black;
+    margin: 5% auto;
+    padding: 1%;
+} */
+
+.winner {
+    font-size: 35px;
+    color: rgb(66, 158, 4);
+    text-align: center;
+    -webkit-animation: glow 1s ease-in-out infinite alternate;
+    -moz-animation: glow 1s ease-in-out infinite alternate;
+    animation: glow 1s ease-in-out infinite alternate;
+  }
+
+  @keyframes glow {
+    from {
+      text-shadow: 0 0 10px rgb(66, 158, 4), 0 0 20px rgb(66, 158, 4), 0 0 30px #79f594, 0 0 40px #79f594, 0 0 50px #79f594, 0 0 60px #79f594, 0 0 70px #79f594;
+    }
+    to {
+      text-shadow: 0 0 20px rgb(66, 158, 4), 0 0 30px #39cc71, 0 0 40px #39cc71, 0 0 50px #39cc71, 0 0 60px #39cc71, 0 0 70px #39cc71, 0 0 80px #39cc71;
+    }
+  }
+  
+  @-webkit-keyframes glow {
+    from {
+      text-shadow: 0 0 10px rgb(66, 158, 4), 0 0 20px rgb(66, 158, 4), 0 0 30px #79f594, 0 0 40px #79f594, 0 0 50px #79f594, 0 0 60px #79f594, 0 0 70px #79f594;
+    }
+    to {
+      text-shadow: 0 0 20px rgb(66, 158, 4), 0 0 30px #39cc71, 0 0 40px #39cc71, 0 0 50px #39cc71, 0 0 60px #39cc71, 0 0 70px #39cc71, 0 0 80px #39cc71;
+    }
+  }
+
+.completeContainer {
+    display:block;
+    width:20em;
+    height:20em;
+    background:rgb(1, 173, 79);
+    -webkit-transform:rotate(-45deg);
+    -moz-transform:rotate(-45deg);
+    transform:rotate(-45deg);
+    position:relative;
+    top:2em;
+    left:2em;
+    text-align:center;
+    text-decoration:none;
+    color:#000;
+    font-weight:bold;
+    margin: 5% auto;
+}
+
+.completeContainer span {
+	display:block;
+	width:20em;
+	height:20em;
+	background:rgb(1, 173, 79);
+	-webkit-transform:rotate(22.5deg);
+	-moz-transform:rotate(22.5deg);
+	transform:rotate(22.5deg);
+}
