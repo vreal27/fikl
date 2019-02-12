@@ -23,16 +23,27 @@ class Waiting extends Component {
 
     render() {
         return (
-            <Flipper flipKey={this.state.users.username}>
-                <h1>Waiting on ...</h1>
-                <ul className="list">
-                {this.state.users.map(d  => (
-                    <Flipped key={'item' + d.username} flipId={d.username}>
-                    <li>{d.username}</li>
-                    </Flipped>
-                ))}
-                </ul>
-            </Flipper>
+        
+            <div id="waitingcontainer">
+                <div id="box">
+                    <h1 id="waiting">Waiting</h1>
+                    <p id="ellipsis"></p>
+                </div>
+                <div id="loadingbar">
+                    <div id="pickle">
+                        <div id="rightbrow"></div>
+                        <div id="leftbrow"></div>
+                        <div className="wholeright"></div>
+                        <div className="wholeleft"></div>
+                        <div className="righteye"></div>
+                        <div className="lefteye"></div> 
+                        <div id="smile"></div>
+                    </div>
+                    <div className="step" id="s1"></div>
+                    <div className="step" id="s2"></div>
+                    <div className="step" id="s3"></div>
+                </div>
+            </div>
         )
     }
 }
