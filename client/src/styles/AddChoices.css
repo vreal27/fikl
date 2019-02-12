@@ -1,26 +1,28 @@
 html {box-sizing: border-box;}
 *, *:before, *:after {box-sizing: inherit;}
 
-#newRoomContainer {
-    text-align: center;
+#addContainer {
     width: 60%;
-    margin: 10% auto;
+    margin: 5% auto;
     border: 1px solid black;
+    border-radius: 20px;
+    text-align: center;
 }
 
-.newRoomForm {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+#addContainer h1 {
+    font-family: 'Courier New', Courier, monospace;
 }
 
-.newRoomForm ul li {
-    list-style: none;
-    margin-left: -20px;
+#addContainer h2 {
+    border: 1px solid rgba(0,0,0,0.3);
+    padding: 10px;
+    width: 40%;
+    margin: 0 auto;
+    margin-bottom: 1%;
+    border-radius: 20px;
 }
 
-.newRoomInput {
+.addInput {
     background: none;
     border: 1px solid black;
     border-radius: 20px;
@@ -29,12 +31,12 @@ html {box-sizing: border-box;}
     margin-bottom: .5%;
 }
 
-.newRoomInput:focus {
+.addInput:focus {
     outline: none;
     background: rgb(182, 240, 182);
 }
 
-.newRoomButton {
+.addButton {
     background: none;
     border: 1px solid black;
     border-radius: 20px;
@@ -42,12 +44,18 @@ html {box-sizing: border-box;}
     width: 30%;
 }
 
-.newRoomButton:hover {
+.addButton:hover {
     background: rgb(182, 240, 182);
     cursor: pointer;
 }
 
-.newRoomButton:focus {
+.addButton:focus {
     outline: none;
     background: rgb(182, 240, 182);
+}
+
+.choice {
+    list-style: none;
+    margin-left: -30px;
+    margin-bottom: 1%;
 }

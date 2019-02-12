@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { editStatus, nextTurn } from '../actions/fikl';
-import '../styles/ElimItem.css'
+import '../styles/RemoveChoices.css'
 
 
 
@@ -17,9 +17,9 @@ class Remove extends Component {
 
     render() {
         return (
-            <div>
+            <div id="removeContainer">
                 <h1>{this.props.room.code}</h1>
-                <h2>Pick one you don't like: {this.props.room.category}</h2>
+                <h2>Pick one {this.props.room.category} you don't like</h2>
                  <ul>
                      {this.props.room.items.map((c, i) =>(
                          <li key={`${c.id}${i}`} className= {c.status ? '' : 'complete'} onClick={() => this.changeStatus(c.id)}>
