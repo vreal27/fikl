@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { addItem, doneAdding } from '../actions/fikl'
-import '../styles/ElimItem.css'
+import '../styles/AddChoices.css'
 
 
 class AddChoices extends Component {
@@ -30,10 +30,10 @@ class AddChoices extends Component {
 
     render() {
         return (
-            <div>
+            <div id="addContainer">
                 <h1>{this.props.room.code}</h1>
                 <h2>Picking: {this.props.room.category}</h2>
-                <form autoComplete="off" onSubmit={this.handleSubmit}>
+                <form autoComplete="off" onSubmit={this.handleSubmit} className="addForm">
 
                     <input 
                         type="text" 
@@ -41,13 +41,14 @@ class AddChoices extends Component {
                         value={this.state.choice} 
                         onChange={this.onChange} 
                         placeholder="Enter a choice"
+                        className="addInput"
                     />
 
                  </form>
-                 <button onClick={this.sayDone}>I'm done adding!</button>
+                 <button onClick={this.sayDone} className="addButton">I'm done adding!</button>
                  <ul>
                      {this.props.room.items.map((c, i) =>(
-                        <li key={`${c.id}${i}`}>{c.choice}</li>
+                        <li key={`${c.id}${i}`} className="choice">{c.choice}</li>
                     ))}
                 </ul>
             </div>

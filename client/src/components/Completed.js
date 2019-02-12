@@ -1,13 +1,17 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import '../styles/Completed.css'
 
 
 class Complete extends Component {
     render() {
         return (
-            <div>
+            <div className="completeContainer">
+                <span><span><span>
                 <h1>Complete!</h1>
-                <h1>THIS GAME'S WINNER IS: {this.props.item.choice}</h1>
+                <h1>THIS GAME'S WINNER IS:</h1> 
+                <p className="winner">{this.props.item.choice}</p>
+                </span></span></span>
             </div>
         )
     }
