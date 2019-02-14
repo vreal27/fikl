@@ -9,7 +9,7 @@ class NewRoom extends Component {
     state = {
         username: '',
         category: '',
-        preset: [`Food?`,`Movies?`,`Games?`,`Show?`, `Ghouls?`]
+        preset: [`Food`,`Movie`,`Game`,`Show`, `Ghouls?`]
     }
 
     handleChange = (e) => {
@@ -59,7 +59,9 @@ class NewRoom extends Component {
         
         return (
             <div id="newRoomContainer">
-                {/* <h1>{roomcode}</h1> */}
+                <div id="newInstructions">
+                    So we're making a new room, huh? We'll just need a username for you (so we know what to call ya), and to know what kind of thing you're going to be choosing. To help spark some ideas, we have a list of them down below. If you can't decide, click the "Pick for me!" button and we'll throw one in for you. Free of charge!
+                </div>
                 <form onSubmit={this.handleSubmit} autoComplete="off" className="newRoomForm">
                     <input
                         type="text"
@@ -85,7 +87,7 @@ class NewRoom extends Component {
                     <ul className="randomcat">
                         {this.state.preset.map(choice => (
                             <Flipped key={'choice' + choice} flipId={choice}> 
-                                <li>{choice}</li>
+                                <li>{choice}?</li>
                             </Flipped>
                            
                         ))}

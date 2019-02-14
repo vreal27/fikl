@@ -8,6 +8,7 @@ axios.defaults.baseURL = '/api'
 // const socket = io.connect('http://192.168.0.113:3001')
 const socket = io.connect('http://localhost:3001')
 
+//depreciated?
 export function postChoices(choice, code) {
   var promise = new Promise((resolve, reject) => {
     store.dispatch({
@@ -25,6 +26,7 @@ export function postChoices(choice, code) {
   return promise
 }
 
+//adds the passed item to the items array in store
 socket.on('display items', item => {
   store.dispatch({
     type: 'POST_CHOICE',
@@ -32,6 +34,8 @@ socket.on('display items', item => {
   })
 })
 
+//sends an item (choice the user suggests) to the items array in io
+//is a promise to prevent async goof-ups
 export function addItem(username, item, code) {
   var promise = new Promise((resolve, reject) => {
     let itemObj = {
@@ -46,6 +50,7 @@ export function addItem(username, item, code) {
   return promise
 }
 
+
 export function addMessage(message) {
   const username = store.getState().listReducer.username
 
@@ -58,7 +63,7 @@ export function addMessage(message) {
 
  
 }
-
+//updates the room object in the store, which is the current room the user is connected to
 
 socket.on('update room', room => {
   store.dispatch({
@@ -67,10 +72,13 @@ socket.on('update room', room => {
   })
 })
 
+//update whose turn it needs to be in io, identified both by name and code
 export function nextTurn(username, code) {
   socket.emit('next turn', {username: username, code: code})
 }
 
+//update an item's status in the io and in the store
+//is a promise to prevent async goof-ups
 export function editStatus(user, id, code){
   var promise = new Promise((resolve, reject) => {
     socket.emit('remove item', {user: user, code: code, id: id})
@@ -85,6 +93,8 @@ export function editStatus(user, id, code){
   return promise
 }
 
+//adds a new room to the rooms object in the io
+//is a promise to prevent async goof-ups
 export function newRoom(category) {
   return new Promise((resolve, reject) => {
     socket.emit('new room', category)
@@ -100,7 +110,7 @@ export function newRoom(category) {
   })
 }
 
-
+//sets the user's code value in the store
 export function setCode(code) {
   store.dispatch({
     type: 'SET_CODE',
@@ -108,6 +118,8 @@ export function setCode(code) {
   })
 }
 
+//joins a room based on code
+//is a promise to avoid async goof-ups
 export function joinRoom(code) {
   return new Promise((resolve, reject) => {
     socket.emit('join room', code)
@@ -116,6 +128,7 @@ export function joinRoom(code) {
   })
 }
 
+//sets the room object in the store for the first time
 socket.on('join room', room => {
   store.dispatch({
     type: 'NEW_ROOM',
@@ -123,6 +136,8 @@ socket.on('join room', room => {
   })
 })
 
+//sets the category both in io and store
+//is a promise to avoid async goof-ups (tired of reading that yet?)
 export function setCategory(category) {
   return new Promise((resolve, reject) => {
     socket.emit('set category', category)
@@ -140,11 +155,12 @@ export function setCategory(category) {
 }
 
 
-
+//gets the category from the io, in case we need it
 export function getCategory(roomcode) {
   socket.emit('get category', roomcode)
 }
 
+//passes along the category retrieved from the io to the store
 socket.on('get category', category => {
   store.dispatch({
     type: "GET_CATEGORY",
@@ -152,6 +168,8 @@ socket.on('get category', category => {
   })
 })
 
+//sets a username in the store, and adds a new user to a specified room code in the io
+//is a promise to avoid async goof-ups
 export function setUsername(username, code) {
   return new Promise((resolve, reject) => {
     store.dispatch({
@@ -165,6 +183,7 @@ export function setUsername(username, code) {
   })
 }
 
+//a user is done adding? tell the back-end
 export function doneAdding(code) {
   return new Promise ((resolve, reject) => {
     socket.emit('done adding', code)
@@ -173,6 +192,9 @@ export function doneAdding(code) {
   })
 }
 
+//advances the user's step in the store
+//"wait", "add", and "remove" are possible. Default is "add"
+//changing steps changes which component loads on Steps.js
 socket.on('next step', step => {
   store.dispatch({
     type: 'NEXT_STEP',
@@ -180,12 +202,27 @@ socket.on('next step', step => {
   })
 })
 
+//if io figures out that the list is complete, tell that to the store
+//will set every user's step to "complete"
 socket.on('complete', () => {
   store.dispatch({
     type: 'COMPLETE'
   })
 })
 
+//adds a message to messages array in store
+export function addMessage(message) {
+  const username = store.getState().listReducer.username
+
+  socket.emit('new message', {
+    username: username,
+    message: message.message
+  })
+
+ 
+}
+
+//adds message to messages in io
 socket.on('new message', (message) => {
   store.dispatch({
     type: 'ADD_MESSAGE',
@@ -200,3 +237,8 @@ socket.on('pass users', (room) => {
     payload: room
   })
 })
+
+//when a timer runs out on RemoveChoices.js, send to the back to advance turns
+export function timeUp(username, code) {
+  socket.emit('next turn', {username: username, code: code})
+}
