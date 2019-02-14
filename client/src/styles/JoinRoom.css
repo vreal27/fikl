@@ -2,11 +2,12 @@
     border: solid 1px black; 
     display: flex; 
     flex-direction: column;
-   justify-content: center;
-   text-align: center;
+    justify-content: center;
+    text-align: center;
     width: 400px;
     margin: 30px auto;
-    padding: 20px;
+    padding: 40px;
+    background-color: rgba(28,87,101,0.62);
 }
 
 .joinform {
@@ -16,11 +17,24 @@
     margin: 0 auto;
 }
 
+.joinform input {
+    color: rgba(241, 203, 32, 0.735);
+}
+
+.joinform input::placeholder {
+    color: black;
+}
+
+
+
 .joinform button {
     background: none; 
     border: solid 1px black; 
     border-radius: 20px; 
     height: 30px;
+}
+.joinform button:hover {
+    background: rgb(147, 194, 147);
 }
 
 .enterinfo {
@@ -34,7 +48,10 @@
 }
 
 .enterinfo:hover{
-    background: rgb(182, 240, 182)
+    background: rgb(147, 194, 147);
 }
 
-
+.joinform h1 {
+    font-family: 'Bungee Shade', cursive;
+    color: rgba(241, 203, 32, 0.735);
+}

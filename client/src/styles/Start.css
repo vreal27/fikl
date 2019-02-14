@@ -1,9 +1,15 @@
+/* @import url(https://fonts.googleapis.com/css?family=Gochi+Hand); */
+
 html {
     box-sizing: border-box;
     background-color: lightgreen;
     font-family: Helvetica, Arial, Helvetica, sans-serif;
+    color: rgba(241, 203, 32, 0.735);
+
 }
 *, *:before, *:after {box-sizing: inherit}
+
+
 
 .startcontainer {
     border: solid 1px black; 
@@ -13,16 +19,26 @@ html {
     padding: 40px;
     margin: 30px auto;
     width: 400px;
+    background-color: rgba(28,87,101,0.62);
+    
+}
+
+.startcontainer h1 {
+    font-family: 'Bungee Shade', cursive;
+    font-size: 60px;
+    color: rgba(241, 203, 32, 0.735);
 }
 
 .startcontainer a {
-    color: black;
+    color: rgba(241, 203, 32, 0.735);
     border: solid 1px black; 
     padding: 10px;
     text-decoration: none; 
     border-radius: 20px;
+
 }
 
 .startcontainer a:hover {
-    background: rgb(182, 240, 182)
+    background: rgb(147, 194, 147);
+    color: black;
 }

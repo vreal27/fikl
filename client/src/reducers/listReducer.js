@@ -11,6 +11,8 @@ const initialState = {
 export default function (state = initialState, action) {
   switch (action.type) {
     // add actions here
+    case 'ADD_MESSAGE':
+      return {...state, messages: [action.payload, ...state.messages]}
     case 'NEW_ROOM':
       return {...state, room: action.payload}
     case 'POST_CHOICE':

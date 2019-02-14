@@ -7,6 +7,8 @@ html {box-sizing: border-box;}
     border: 1px solid black;
     border-radius: 20px;
     text-align: center;
+    background-color: rgba(260,260,260, .5);
+    padding: 40px;
 }
 
 #addContainer h1 {
@@ -59,3 +61,39 @@ html {box-sizing: border-box;}
     margin-left: -30px;
     margin-bottom: 1%;
 }
+
+
+.rotate-scale-up {
+	-webkit-animation: rotate-scale-up 0.65s linear both;
+	        animation: rotate-scale-up 0.65s linear both;
+}
+
+@-webkit-keyframes rotate-scale-up {
+    0% {
+      -webkit-transform: scale(1) rotateZ(0);
+              transform: scale(1) rotateZ(0);
+    }
+    50% {
+      -webkit-transform: scale(2) rotateZ(180deg);
+              transform: scale(2) rotateZ(180deg);
+    }
+    100% {
+      -webkit-transform: scale(1) rotateZ(360deg);
+              transform: scale(1) rotateZ(360deg);
+    }
+  }
+  @keyframes rotate-scale-up {
+    0% {
+      -webkit-transform: scale(1) rotateZ(0);
+              transform: scale(1) rotateZ(0);
+    }
+    50% {
+      -webkit-transform: scale(2) rotateZ(180deg);
+              transform: scale(2) rotateZ(180deg);
+    }
+    100% {
+      -webkit-transform: scale(1) rotateZ(360deg);
+              transform: scale(1) rotateZ(360deg);
+    }
+  }
+  

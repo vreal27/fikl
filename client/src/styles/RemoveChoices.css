@@ -19,3 +19,7 @@
 #removeContainer ul li:hover {
     cursor: pointer;
 }
+
+#removeContainer li:hover {
+    cursor: pointer;
+}

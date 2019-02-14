@@ -178,7 +178,8 @@ export default function(server) {
       socket.emit('pass users', thisRoom)
     })
 
-    // chat room
+    // // chat room
+    // const thisRoom = rooms.find(room => room.code === code)
     socket.join('main')
     socket.on('new message', (message) => {
       io.to(message.roomcode).emit('new message', message)

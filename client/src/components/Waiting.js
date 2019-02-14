@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import { Flipper, Flipped } from 'react-flip-toolkit'
 import shuffle from 'lodash.shuffle'
 import '../styles/ElimItem.css'
 import { connect } from 'react-redux'
