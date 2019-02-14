@@ -3,9 +3,18 @@ html {box-sizing: border-box;}
 
 #newRoomContainer {
     text-align: center;
-    width: 60%;
-    margin: 10% auto;
-    border: 1px solid black;
+    background-color: rgba(28,87,101,0.62);
+    width: 50%;
+    margin: 30px auto;
+    color: rgb(241, 203, 32);
+    padding: 2%;
+    border-radius: 10%;
+    box-shadow: 0.3em 0.3em rgb(55, 125, 34), 0.3em 0.3em rgba(255,255,255,0.4) inset;
+}
+
+#newInstructions {
+    line-height: 1.3em;
+    margin-bottom: 3%;
 }
 
 .newRoomForm {
@@ -21,33 +30,35 @@ html {box-sizing: border-box;}
 }
 
 .newRoomInput {
-    background: none;
-    border: 1px solid black;
+    background-color: rgba(28,87,101,0.8);
+    color: rgba(241, 203, 32, 0.7);
+    border: none;
+    box-shadow: 0.1em 0.1em rgb(28, 63, 17), 0.1em 0.1em rgba(255,255,255,0.4) inset;
     border-radius: 20px;
     padding: 10px;
     width: 30%;
-    margin-bottom: .5%;
+    margin-bottom: 1%;
 }
 
-.newRoomInput:focus {
+.newRoomInput:hover, .newRoomInput:focus {
+    color: black;
     outline: none;
-    background: rgb(182, 240, 182);
+    background: rgb(147, 194, 147);
 }
 
 .newRoomButton {
-    background: none;
-    border: 1px solid black;
+    background-color: rgba(28,87,101,0.8);
+    border: none;
+    box-shadow: 0.1em 0.1em rgb(28, 63, 17), 0.1em 0.1em rgba(255,255,255,0.4) inset;
+    color: rgba(241, 203, 32, 0.7);
     border-radius: 20px;
     padding: 10px;
     width: 30%;
 }
 
-.newRoomButton:hover {
-    background: rgb(182, 240, 182);
-    cursor: pointer;
-}
-
-.newRoomButton:focus {
+.newRoomButton:hover, .newRoomButton:focus {
+    background: rgb(147, 194, 147);
     outline: none;
-    background: rgb(182, 240, 182);
+    color: black;
+    cursor: pointer;
 }

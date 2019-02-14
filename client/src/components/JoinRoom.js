@@ -27,9 +27,10 @@ class JoinRoom extends Component {
     render() {
         return (
             <div className="joincontainer">
-                
                 <form onSubmit={this.handleSubmit} autoComplete="off" className="joinform">
-                <h1>Enter info to join!</h1>
+                    <div className="joinInstructions">
+                        So you're joining an existing room, huh? No problem! Ask your friend (and/or enemy, we don't judge) for the room code they see on their screen after creating the room. Pop that into the room code area here:
+                    </div>
                     <input 
                         className="enterinfo"
                         type="text"
@@ -38,6 +39,9 @@ class JoinRoom extends Component {
                         onChange={this.handleChange}
                         placeholder="Room code"
                     />
+                    <div className="joinInstructions">
+                        And we'll need a username for you (so we know what to call ya):
+                    </div>
                     <input 
                         className="enterinfo"
                         type="text"
