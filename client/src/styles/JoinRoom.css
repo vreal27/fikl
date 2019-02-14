@@ -3,6 +3,8 @@
     flex-direction: column;
     justify-content: center;
     text-align: center;
+    margin: 0 auto; 
+    margin-top: 40px; 
     background-color: rgba(28,87,101,0.62);
     width: 50%;
     color: rgb(241, 203, 32);

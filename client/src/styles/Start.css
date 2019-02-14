@@ -28,7 +28,14 @@ html {
 .startcontainer h1 {
     font-family: 'Bungee Shade', cursive;
     font-size: 60px;
-    color: rgba(241, 203, 32, 0.735);
+    color: rgba(241, 203, 32);
+}
+
+#introtext {
+    font-family: 'Bungee Shade', cursive;
+    font-size: 30px;
+    display: inline-block;
+    margin-bottom: 15px; 
 }
 
 .startcontainer a {
