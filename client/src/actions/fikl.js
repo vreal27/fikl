@@ -5,7 +5,8 @@ import shortId from 'shortid'
 
 axios.defaults.baseURL = '/api'
 
-const socket = io.connect('http://10.68.0.181:3001')
+// const socket = io.connect('http://192.168.0.113:3001')
+const socket = io.connect('http://localhost:3001')
 
 //depreciated?
 export function postChoices(choice, code) {
@@ -49,7 +50,21 @@ export function addItem(username, item, code) {
   return promise
 }
 
+
+export function addMessage(message) {
+  const username = store.getState().listReducer.username
+
+  socket.emit('new message', {
+    user: username,
+    message: message.message,
+    roomcode: message.roomcode
+
+  })
+
+ 
+}
 //updates the room object in the store, which is the current room the user is connected to
+
 socket.on('update room', room => {
   store.dispatch({
     type: 'UPDATE_ROOM',
@@ -211,7 +226,7 @@ export function addMessage(message) {
 socket.on('new message', (message) => {
   store.dispatch({
     type: 'ADD_MESSAGE',
-    message: message
+    payload: message
   })
 })
 

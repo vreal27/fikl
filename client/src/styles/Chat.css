@@ -1,0 +1,116 @@
+
+.chatcontainer {
+    border: solid 1px black;
+    
+}
+
+
+.roomwrap {
+    height:400px;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    justify-items: center;
+    text-align: center;
+}
+
+
+.chatbox {
+    border: solid 1px black;
+    width: 80%;
+    height: 50%;
+    border-radius: 5px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    overflow: auto;
+    text-align: start;
+    background-color: rgba(28,87,101,0.62);
+    
+}
+.sendmessage {
+    border: solid 1px black;
+    border-radius: 5px;
+    width: 75%;
+    margin: 0 auto;
+    margin-top: 10px;
+}
+
+#submitform {
+    outline: none;
+   
+    padding-left: 10px;
+    height: 63px;
+    width: 90%;
+    border-radius: 5px; 
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    border: none;
+    background-color: rgba(28,87,101,0.62);
+    
+}
+
+#submitButton {
+    height: 63px;
+    width: 10%;
+    border: none;
+    border-left: solid 1px black;
+    border-radius: 5px;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    outline: none;
+    background-color: rgba(28,87,101,0.62);
+    
+}
+
+.message {
+    display: inline-block;
+    margin-left: 5px;
+
+}
+
+.messagebox {
+    font-size: 15px;
+    padding: 10px;
+    border: solid 1px black;
+    border-radius: 5px;
+    width: 300px;
+    margin-left: 10px; 
+    word-wrap: break-word;
+    /* overflow-x: hidden;
+    overflow-y:visible; */
+    
+}
+
+.slide-out-fwd-center {
+	-webkit-animation: slide-out-fwd-center 0.7s cubic-bezier(0.550, 0.085, 0.680, 0.530) reverse both;
+	        animation: slide-out-fwd-center 0.7s cubic-bezier(0.550, 0.085, 0.680, 0.530) reverse both;
+}
+
+
+@-webkit-keyframes slide-out-fwd-center {
+    0% {
+      -webkit-transform: translateZ(1);
+              transform: translateZ(1);
+      opacity: 1;
+    }
+    100% {
+      -webkit-transform: translateZ(600px);
+              transform: translateZ(600px);
+      opacity: 0;
+    }
+  }
+  @keyframes slide-out-fwd-center {
+    0% {
+      -webkit-transform: translateZ(1);
+              transform: translateZ(1);
+      opacity: 1;
+    }
+    100% {
+      -webkit-transform: translateZ(600px);
+              transform: translateZ(600px);
+      opacity: 0;
+    }
+  }
+  

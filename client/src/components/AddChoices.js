@@ -4,6 +4,7 @@ import { addItem, doneAdding } from '../actions/fikl'
 import '../styles/AddChoices.css'
 
 
+
 class AddChoices extends Component {
     state = {
         choice: ''
@@ -31,7 +32,8 @@ class AddChoices extends Component {
     render() {
         return (
             <div id="addContainer">
-                <h1>{this.props.room.code}</h1>
+                <h1 className= "rotate-scale-up">{this.props.room.code}</h1>
+                <h2>Picking: {this.props.room.category}</h2>
                 <div className="addInstructions">
                     That up there is your room code. Anybody that wants to join this particular room needs to have this code.
                 </div>
@@ -56,6 +58,7 @@ class AddChoices extends Component {
                         <li key={`${c.id}${i}`} className="choice">{c.choice}</li>
                     ))}
                 </ul>
+          
             </div>
         )
 

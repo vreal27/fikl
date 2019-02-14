@@ -1,13 +1,14 @@
 .joincontainer {
+    display: flex; 
+    flex-direction: column;
+    justify-content: center;
     text-align: center;
-    background-color: rgba(28,87,101,0.8);
+    background-color: rgba(28,87,101,0.62);
     width: 50%;
-    margin: 30px auto;
     color: rgb(241, 203, 32);
     padding: 2%;
     border-radius: 10%;
     box-shadow: 0.3em 0.3em rgb(55, 125, 34), 0.3em 0.3em rgba(255,255,255,0.4) inset;
-
 }
 
 .joinform {
@@ -15,6 +16,14 @@
     flex-direction: column;
     width: 50%;
     margin: 0 auto;
+}
+
+.joinform input {
+    color: rgba(241, 203, 32, 0.735);
+}
+
+.joinform input::placeholder {
+    color: black;
 }
 
 .joinInstructions {
@@ -36,6 +45,9 @@
     background: rgb(147, 194, 147);
     color: black;
 }
+.joinform button:hover {
+    background: rgb(147, 194, 147);
+}
 
 .enterinfo {
     margin: 10px;
@@ -55,4 +67,7 @@
     color: black;
 }
 
-
+.joinform h1 {
+    font-family: 'Bungee Shade', cursive;
+    color: rgba(241, 203, 32, 0.735);
+}

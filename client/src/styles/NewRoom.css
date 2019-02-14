@@ -3,9 +3,9 @@ html {box-sizing: border-box;}
 
 #newRoomContainer {
     text-align: center;
+    margin: 10% auto;
     background-color: rgba(28,87,101,0.62);
     width: 50%;
-    margin: 30px auto;
     color: rgb(241, 203, 32);
     padding: 2%;
     border-radius: 10%;
@@ -59,6 +59,12 @@ html {box-sizing: border-box;}
 .newRoomButton:hover, .newRoomButton:focus {
     background: rgb(147, 194, 147);
     outline: none;
-    color: black;
+    background: rgb(182, 240, 182);
+}
+
+.newRoomForm h2 {
+    font-family: 'Bungee Shade', cursive;
+    color: rgb(241,203,32);
+    font-size: 40px;
     cursor: pointer;
 }
