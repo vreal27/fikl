@@ -1,26 +1,40 @@
 .joincontainer {
-    border: solid 1px black; 
-    display: flex; 
-    flex-direction: column;
-   justify-content: center;
-   text-align: center;
-    width: 400px;
+    text-align: center;
+    background-color: rgba(28,87,101,0.8);
+    width: 50%;
     margin: 30px auto;
-    padding: 20px;
+    color: rgb(241, 203, 32);
+    padding: 2%;
+    border-radius: 10%;
+    box-shadow: 0.3em 0.3em rgb(55, 125, 34), 0.3em 0.3em rgba(255,255,255,0.4) inset;
+
 }
 
 .joinform {
     display: flex;
     flex-direction: column;
-    width: 200px;
+    width: 50%;
     margin: 0 auto;
 }
 
+.joinInstructions {
+    line-height: 1.3em;
+    margin-bottom: 3%;
+}
+
 .joinform button {
-    background: none; 
-    border: solid 1px black; 
+    background-color: rgba(28,87,101,0.8);
+    color: rgb(241, 203, 32);
+    border: none;
     border-radius: 20px; 
     height: 30px;
+    box-shadow: 0.1em 0.1em rgb(28, 63, 17), 0.1em 0.1em rgba(255,255,255,0.4) inset;
+}
+
+.joinform button:hover, .joinform button:focus {
+    outline: none;
+    background: rgb(147, 194, 147);
+    color: black;
 }
 
 .enterinfo {
@@ -28,13 +42,17 @@
     height: 30px;
     border-radius: 20px;
     padding: 10px;
-    border: solid 1px black;
-    background: none; 
+    border: none;
+    background-color: rgba(28,87,101,0.8);
+    color: rgba(241, 203, 32, 0.7); 
     outline: none; 
+    box-shadow: 0.1em 0.1em rgb(28, 63, 17), 0.1em 0.1em rgba(255,255,255,0.4) inset;
 }
 
-.enterinfo:hover{
-    background: rgb(182, 240, 182)
+.enterinfo:hover, .enterinfo:focus {
+    outline: none;
+    background: rgb(147, 194, 147);
+    color: black;
 }
 
 

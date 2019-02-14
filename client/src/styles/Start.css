@@ -6,23 +6,47 @@ html {
 *, *:before, *:after {box-sizing: inherit}
 
 .startcontainer {
-    border: solid 1px black; 
+    background-color: rgba(28,87,101,0.62);
+    color: rgb(241, 203, 32);
     display: flex;
     flex-direction: column;
     text-align: center; 
+    justify-content: center;
     padding: 40px;
     margin: 30px auto;
-    width: 400px;
+    width: 50%;
+    border-radius: 20%;
+    box-shadow: 0.3em 0.3em rgb(55, 125, 34), 0.3em 0.3em rgba(255,255,255,0.4) inset;
 }
 
 .startcontainer a {
-    color: black;
-    border: solid 1px black; 
+    background-color: rgba(28,87,101,0.8);
+    color: rgba(241, 203, 32, 1);
     padding: 10px;
     text-decoration: none; 
     border-radius: 20px;
+    box-shadow: 0.1em 0.1em rgb(28, 63, 17), 0.1em 0.1em rgba(255,255,255,0.4) inset;
 }
 
 .startcontainer a:hover {
-    background: rgb(182, 240, 182)
+    background: rgb(147, 194, 147);
+    color: black;
+}
+
+.startcontainer a:focus {
+    box-shadow: 0.1em 0.1em rgba(255,255,255,0.4) inset;
+    color: black;
+}
+
+#fiklLogo {
+    width: 50%;
+    align-self: center;
+}
+
+#explainStart {
+    line-height: 1.3em;
+}
+
+.emphasis {
+    font-style: italic;
 }

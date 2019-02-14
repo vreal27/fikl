@@ -1,9 +1,12 @@
 #removeContainer {
-    border: 1px solid black;
-    width: 30%;
-    margin: 5% auto;
     text-align: center;
-    border-radius: 20px;
+    background-color: rgba(28,87,101,0.62);
+    width: 50%;
+    margin: 30px auto;
+    color: rgb(241, 203, 32);
+    padding: 2%;
+    border-radius: 10%;
+    box-shadow: 0.3em 0.3em rgb(55, 125, 34), 0.3em 0.3em rgba(255,255,255,0.4) inset;
 }
 
 #removeContainer h1 {
@@ -18,4 +21,61 @@
 
 #removeContainer ul li:hover {
     cursor: pointer;
+}
+
+#timeBar {
+    background: green;
+    height: 40px;
+    border-radius: 20px;
+    position: relative;
+}
+
+#wholetimeleft {
+    position: absolute;
+    height: 10px;
+    width: 10px;
+    border-radius: 60%;
+    background: white;
+    top: 24px;
+    left: 3px;
+}
+
+#timelefteye {
+    position: absolute;
+    height: 5px;
+    width: 5px;
+    border-radius: 60%;
+    background: black;
+    top: 24px;
+    left: 5px;
+}
+
+#wholetimeright {
+    position: absolute;
+    height: 10px;
+    width: 10px;
+    border-radius: 60%;
+    background: white;
+    top: 5px;
+    left: 3px;
+}
+
+#timerighteye {
+    position: absolute;
+    height: 5px;
+    width: 5px;
+    border-radius: 60%;
+    background: black;
+    top: 5px;
+    left: 5px;
+}
+
+#timersmile {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    border-right: solid 2px black;
+    top: 10px;
+    left: 5px;
+    border-radius: 9px;
 }
