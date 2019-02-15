@@ -211,16 +211,16 @@ socket.on('complete', () => {
 })
 
 //adds a message to messages array in store
-export function addMessage(message) {
-  const username = store.getState().listReducer.username
+// export function addMessage(message) {
+//   const username = store.getState().listReducer.username
 
-  socket.emit('new message', {
-    username: username,
-    message: message.message
-  })
+//   socket.emit('new message', {
+//     username: username,
+//     message: message.message
+//   })
 
  
-}
+// }
 
 //adds message to messages in io
 socket.on('new message', (message) => {

@@ -59,7 +59,7 @@ html {box-sizing: border-box;}
 .newRoomButton:hover, .newRoomButton:focus {
     background: rgb(147, 194, 147);
     outline: none;
-    background: rgb(182, 240, 182);
+    color: black;
 }
 
 .newRoomForm h2 {
