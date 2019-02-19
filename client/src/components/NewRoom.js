@@ -54,6 +54,12 @@ class NewRoom extends Component {
         })
     }
 
+    pickForMe = (value) => {
+        this.setState({
+            category: value
+        })
+    }
+
     render() {
         
         return (
@@ -86,9 +92,9 @@ class NewRoom extends Component {
                 <form onSubmit={this.pickRandom} className="newRoomForm">
                     <h2>Can't decide on what to do?</h2>
                     <ul className="randomcat">
-                        {this.state.preset.map(choice => (
+                        {this.state.preset.map((choice, i) => (
 
-                                <li>{choice}?</li>
+                                <li key={`randomchoice ${i}`} onClick={() => this.pickForMe(choice)}>{choice}?</li>
                      
                            
                         ))}
