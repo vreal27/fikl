@@ -186,10 +186,25 @@ export default function(server) {
 
     })
 
-    
-
-    
-
     console.log('User has connected to socket server')
+
+    socket.on('disconnecting', (reason) => {
+      var sockrooms = Object.keys(socket.rooms)
+      //the first one is their socket.id
+      var userid = sockrooms[0]
+      //the third one is the room they have joined
+      var code = 0
+      if(sockrooms[2] !== undefined) {
+        code = sockrooms[2]
+        let userHere = rooms.find(room => room.code === code).users.findIndex(user => user.id === userid)
+        if(userHere > -1) {
+          rooms.find(room => room.code === code).users.splice(userHere, 1)
+        }
+        if(rooms.find(room => room.code === code).users.length === 0) {
+          let roomHere = rooms.findIndex(room => room.code === code)
+          rooms.splice(roomHere, 1)
+        }
+      }
+    })
   })
 }
