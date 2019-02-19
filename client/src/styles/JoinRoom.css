@@ -1,3 +1,11 @@
+@media only screen and (max-width: 500px){
+    .joincontainer {
+        width: 100%; 
+    }
+}
+
+
+
 .joincontainer {
     display: flex; 
     flex-direction: column;
@@ -6,7 +14,7 @@
     margin: 0 auto; 
     margin-top: 40px; 
     background-color: rgba(28,87,101,0.62);
-    width: 50%;
+    width: 600px;
     color: rgb(241, 203, 32);
     padding: 2%;
     border-radius: 10%;
