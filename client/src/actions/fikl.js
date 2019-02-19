@@ -5,8 +5,7 @@ import shortId from 'shortid'
 
 axios.defaults.baseURL = '/api'
 
-const socket = io.connect('http://10.68.0.181:3001')
-// const socket = io.connect('http://localhost:3001')
+const socket = io.connect('http://localhost:3001')
 
 //depreciated?
 export function postChoices(choice, code) {
@@ -209,18 +208,6 @@ socket.on('complete', () => {
     type: 'COMPLETE'
   })
 })
-
-//adds a message to messages array in store
-// export function addMessage(message) {
-//   const username = store.getState().listReducer.username
-
-//   socket.emit('new message', {
-//     username: username,
-//     message: message.message
-//   })
-
- 
-// }
 
 //adds message to messages in io
 socket.on('new message', (message) => {

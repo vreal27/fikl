@@ -7,7 +7,8 @@ import '../styles/AddChoices.css'
 
 class AddChoices extends Component {
     state = {
-        choice: ''
+        choice: '',
+        copy: ''
     }
 
     onChange = (e) => {
@@ -28,11 +29,21 @@ class AddChoices extends Component {
         e.preventDefault()
         doneAdding(this.props.room.code)
     }
+    
+    copyToClipboard = (e) => {
+        e.preventDefault()
+        this.setState(
+            {
+                copy: 'Copied!'
+            }
+        )
 
+    }
     render() {
         return (
             <div id="addContainer">
                 <h1 className= "rotate-scale-up">{this.props.room.code}</h1>
+                <button onClick={this.copyToClipboard}>Copy this code!</button>
                 <h2>Picking: {this.props.room.category}</h2>
                 <div className="addInstructions">
                     That up there is your room code. Anybody that wants to join this particular room needs to have this code.

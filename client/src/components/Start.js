@@ -9,7 +9,7 @@ class Start extends Component {
       <div className="startcontainer">
         <h1 id="logo">Fikl</h1>
         <div id="explainStart">
-          Here's a classic pickle: Everyone wants to do <span className="emphasis">something</span> but nobody can pick what exactly to <span className="emphasis">do</span>. Enter fikl, which you're visiting right this second. We're going to help you make a decision by listing every possible thing you guys/gals/other pals can think of, then take turns eliminating one option at a time. <br />We're going to need a room for everybody to join, first. So:
+          <span id="introtext">Here's a classic pickle:</span> Everyone wants to do <span className="emphasis">something</span> but nobody can pick what exactly to <span className="emphasis">do</span>. Enter fikl, which you're visiting right this second. We're going to help you make a decision by listing every possible thing you guys/gals/other pals can think of, then take turns eliminating one option at a time. <br />We're going to need a room for everybody to join, first. So:
         </div>
         <p>Are you starting a new room?</p>
         <span className="startlink"><Link to='/newroom'>Start a New</Link></span>

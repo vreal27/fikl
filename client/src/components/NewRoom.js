@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { newRoom, setUsername } from '../actions/fikl'
-import { Flipper, Flipped } from 'react-flip-toolkit'
 import shuffle from 'lodash.shuffle'
 import '../styles/NewRoom.css'
 
@@ -82,20 +81,20 @@ class NewRoom extends Component {
                     <button type="submit" className="newRoomButton">Let's get this started!</button>
                 </form>
 
-                <Flipper flipKey={this.state.preset.join("")}>
+             
                 <form onSubmit={this.pickRandom} className="newRoomForm">
                     <ul className="randomcat">
                         {this.state.preset.map(choice => (
-                            <Flipped key={'choice' + choice} flipId={choice}> 
+
                                 <li>{choice}?</li>
-                            </Flipped>
+                     
                            
                         ))}
                     </ul>
                     <h2>Can't decide on what to do?</h2>
                     <button type="submit" className="newRoomButton">Pick for me!</button>
                 </form>
-                </Flipper>
+               
                 {/* <span><Link to={`/${roomcode}`}>Everybody's In!</Link></span> */}
             </div>
         )
