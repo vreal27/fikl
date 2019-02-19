@@ -10,7 +10,7 @@ class Complete extends Component {
                 <div className="completeContainer">
                     <span><span><span>
                     <h1>Complete!</h1>
-                    <h1>THIS GAME'S WINNER IS:</h1> 
+                    <h1>Looks like you picked:</h1> 
                     <p className="winner">{this.props.item.choice}</p>
                     </span></span></span>
                    

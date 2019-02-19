@@ -5,7 +5,6 @@ import shortId from 'shortid'
 
 axios.defaults.baseURL = '/api'
 
-// const socket = io.connect('http://192.168.0.113:3001')
 const socket = io.connect('http://localhost:3001')
 
 //depreciated?
@@ -209,7 +208,6 @@ socket.on('complete', () => {
     type: 'COMPLETE'
   })
 })
-
 
 //adds message to messages in io
 socket.on('new message', (message) => {
