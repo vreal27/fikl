@@ -3,13 +3,20 @@ html {box-sizing: border-box;}
 
 #newRoomContainer {
     text-align: center;
-    margin: 10% auto;
+    margin: 0 auto;
+    margin-top: 30px;
     background-color: rgba(28,87,101,0.62);
     width: 50%;
     color: rgb(241, 203, 32);
     padding: 2%;
     border-radius: 10%;
     box-shadow: 0.3em 0.3em rgb(55, 125, 34), 0.3em 0.3em rgba(255,255,255,0.4) inset;
+}
+
+#welcome {
+    font-family: 'Bungee Shade', cursive;
+    color: rgb(241,203,32);
+    font-size: 50px;
 }
 
 #newInstructions {
@@ -59,6 +66,7 @@ html {box-sizing: border-box;}
 .newRoomButton:hover, .newRoomButton:focus {
     background: rgb(147, 194, 147);
     outline: none;
+    background: rgb(182, 240, 182);
     color: black;
 }
 
@@ -66,5 +74,23 @@ html {box-sizing: border-box;}
     font-family: 'Bungee Shade', cursive;
     color: rgb(241,203,32);
     font-size: 40px;
-    cursor: pointer;
+}
+
+.randomcat {
+    margin-top: 5px;
+    box-shadow: 0.1em 0.1em rgb(28, 63, 17), 0.1em 0.1em rgba(255,255,255,0.4) inset;
+    border-radius: 20px;
+    padding: 10px;
+    width: 75%;
+    display: flex; 
+    flex-wrap: wrap; 
+    height: 50px;
+    justify-content: center;
+    background-color: rgba(28,87,101,0.8);
+}
+
+.randomcat li {
+    height: 20px;
+    width: 80px;
+    margin: 5px 9px; 
 }

@@ -11,7 +11,8 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "concurrently": "^4.1.0"
+    "concurrently": "^4.1.0",
+    "react-copy-to-clipboard": "^5.0.1"
   },
   "boilerplate": {
     "name": "react-server-boilerplate",

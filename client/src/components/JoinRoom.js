@@ -27,6 +27,7 @@ class JoinRoom extends Component {
     render() {
         return (
             <div className="joincontainer">
+                <h1 id="join">Let's join a room!</h1>
                 <form onSubmit={this.handleSubmit} autoComplete="off" className="joinform">
                     <div className="joinInstructions">
                         So you're joining an existing room, huh? No problem! Ask your friend (and/or enemy, we don't judge) for the room code they see on their screen after creating the room. Pop that into the room code area here:

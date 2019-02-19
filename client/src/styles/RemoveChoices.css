@@ -3,11 +3,18 @@
     background-color: rgba(28,87,101,0.62);
     width: 50%;
     margin: 30px auto;
+    margin-bottom: 0;
     color: rgb(241, 203, 32);
     padding: 2%;
     border-radius: 10%;
     box-shadow: 0.3em 0.3em rgb(55, 125, 34), 0.3em 0.3em rgba(255,255,255,0.4) inset;
 }
+
+#remove {
+    font-family: 'Bungee Shade', cursive;
+    font-size: 26px;
+
+} 
 
 #removeContainer h1 {
     font-family: 'Courier New', Courier, monospace;
@@ -95,6 +102,33 @@
     border-radius: 9px;
 }
 
+#removeChoices {
+    height: 300px;
+    margin: 0 auto;
+    overflow: auto;
+    border: 1px solid rgba(0,0,0,0.3);
+    border-radius: 20px;
+    box-shadow: 0.1em 0.1em rgb(28, 63, 17), 0.1em 0.1em rgba(255,255,255,0.4) inset;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+#removeChoices li {
+    list-style: none;
+    width: 40%;
+    height: 35px;
+    margin: 10px 30px;
+    background-color: rgba(28,87,101,0.8);
+    border: none;
+    box-shadow: 0.1em 0.1em rgb(28, 63, 17), 0.1em 0.1em rgba(255,255,255,0.4) inset;
+    color: rgba(241, 203, 32, 0.7);
+    border-radius: 20px;
+    padding: 10px;
+
+}
+  
 #talkbubble {
     width: 80px;
     height: 100px;

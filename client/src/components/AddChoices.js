@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { addItem, doneAdding } from '../actions/fikl'
+import {CopyToClipboard} from 'react-copy-to-clipboard'
 import '../styles/AddChoices.css'
 
 
@@ -8,8 +9,18 @@ import '../styles/AddChoices.css'
 class AddChoices extends Component {
     state = {
         choice: '',
-        copy: ''
+        value: this.props.room.code,
+        copied: false
     }
+
+
+    copyCode = ({target: {value}}) => {
+        this.setState({value, copied: false})
+    }
+
+   onCopy = () => {
+       this.setState({copied: true})
+   }
 
     onChange = (e) => {
         this.setState({[e.target.name]: e.target.value})
@@ -30,20 +41,20 @@ class AddChoices extends Component {
         doneAdding(this.props.room.code)
     }
     
-    copyToClipboard = (e) => {
-        e.preventDefault()
-        this.setState(
-            {
-                copy: 'Copied!'
-            }
-        )
-
-    }
+   
     render() {
         return (
             <div id="addContainer">
-                <h1 className= "rotate-scale-up">{this.props.room.code}</h1>
-                <button onClick={this.copyToClipboard}>Copy this code!</button>
+            
+
+                <textarea onChange={this.copyCode} value={this.state.value} className="rotate-scale-up"/>
+                <CopyToClipboard onCopy={this.onCopy} text={this.state.value}>
+                    <button>Copy this code!</button>
+                </CopyToClipboard>
+              
+
+
+
                 <h2>Picking: {this.props.room.category}</h2>
                 <div className="addInstructions">
                     That up there is your room code. Anybody that wants to join this particular room needs to have this code.
@@ -69,6 +80,9 @@ class AddChoices extends Component {
                         <li key={`${c.id}${i}`} className="choice">{c.choice}</li>
                     ))}
                 </ul>
+
+
+                
           
             </div>
         )
