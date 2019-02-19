@@ -58,6 +58,7 @@ class NewRoom extends Component {
         
         return (
             <div id="newRoomContainer">
+                <h1 id="welcome">Welcome!</h1>
                 <div id="newInstructions">
                     So we're making a new room, huh? We'll just need a username for you (so we know what to call ya), and to know what kind of thing you're going to be choosing. To help spark some ideas, we have a list of them down below. If you can't decide, click the "Pick for me!" button and we'll throw one in for you. Free of charge!
                 </div>
@@ -83,6 +84,7 @@ class NewRoom extends Component {
 
              
                 <form onSubmit={this.pickRandom} className="newRoomForm">
+                    <h2>Can't decide on what to do?</h2>
                     <ul className="randomcat">
                         {this.state.preset.map(choice => (
 
@@ -91,7 +93,7 @@ class NewRoom extends Component {
                            
                         ))}
                     </ul>
-                    <h2>Can't decide on what to do?</h2>
+                   
                     <button type="submit" className="newRoomButton">Pick for me!</button>
                 </form>
                

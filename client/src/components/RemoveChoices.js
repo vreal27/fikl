@@ -56,13 +56,14 @@ class Remove extends Component {
         if(width <= 40) {
             width = 40
         }
+
         return (
             <div id="removeContainer">
+                <h1 id="remove">Pick one {this.props.room.category} you don't like!</h1>
                 <div className="removeInstructions">
                     Okay, so now let's pick one {this.props.room.category} that you're not super into. Try to be pretty quick about it, though, it's impolite to keep everyone else waiting!
                 </div>
-                <h2>Pick one {this.props.room.category} you don't like</h2>
-                 <ul>
+                 <ul id="removeChoices">
                      {this.props.room.items.map((c, i) =>(
                          <li key={`${c.id}${i}`} className= {c.status ? '' : 'complete'} onClick={() => this.changeStatus(c.id)}>
                          {c.choice}

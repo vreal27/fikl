@@ -41,9 +41,9 @@ class Step extends Component {
 
                     <div className="roomwrap">
                     
-                        <h1 className="slide-out-fwd-center">Fikl Chat</h1>
+                       
                         <div className="chatbox" ref="chatroom">
-
+                        <h1 className="slide-out-fwd-center">[ Fikl Chat ]</h1>
 
 
                             {this.props.messages.map((m,i )=> (
@@ -56,7 +56,7 @@ class Step extends Component {
                         </div>
 
 
-                        <form className="sendmesage" onSubmit={this.handleSubmit}>
+                        <form className="sendmessage" onSubmit={this.handleSubmit}>
                                 <input type="text" id="submitform" name="message" value={this.state.message} onChange={this.handleChange} autoComplete="off"/>
                                 <button type="submit" id="submitButton"><i className="fa fa-angle-up"></i></button>
                     
@@ -69,23 +69,33 @@ class Step extends Component {
                 )
         } else if (this.props.step === "remove"){
             return (
-            
-                <div className="roomwrap">
+                <div className="chatcontainer">
                     <RemoveChoices/>
-                    <div className="chatbox" ref="chatroom">
-                        {this.props.messages.map((m,i )=> (
-                        <p key= {"message" + i} className="messagebox">
-                            <span className="user">[ {m.user} ]</span>: 
-                            <span className="message">{m.message}</span>
-                        </p>
-                    ))}
-                        <form className="sendmesage" onSubmit={this.handleSubmit}>
-                            <input type="text" name="message" value={this.state.message} onChange={this.handleChange} autoComplete="off"/>
-                            <button type="submit" id="submitButton"><i className="fa fa-angle-up"></i></button>
+
+                     <div className="roomwrap">
+                    
+                       
+                        <div className="chatbox" ref="chatroom">
+                        <h1 className="slide-out-fwd-center">[ Fikl Chat ]</h1>
+
+
+                            {this.props.messages.map((m,i )=> (
+                            <p key= {"message" + i} className="messagebox">
+                                <span className="user">[ {m.user} ]</span>: 
+                                <span className="message">{m.message}</span>
+                            </p>
+                        ))}
+                        
+                        </div>
+
+
+                        <form className="sendmessage" onSubmit={this.handleSubmit}>
+                                <input type="text" id="submitform" name="message" value={this.state.message} onChange={this.handleChange} autoComplete="off"/>
+                                <button type="submit" id="submitButton"><i className="fa fa-angle-up"></i></button>
+                    
                         </form>
                     </div>
                 </div>
-                    
                 
                 )
         } else if (this.props.step === "complete"){

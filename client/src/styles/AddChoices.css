@@ -9,6 +9,7 @@ html {box-sizing: border-box;}
     background-color: rgba(28,87,101,0.8);
     width: 50%;
     margin: 30px auto;
+    margin-bottom: 0; 
     color: rgb(241, 203, 32);
     padding: 2%;
     border-radius: 10%;
@@ -22,6 +23,34 @@ html {box-sizing: border-box;}
 
 #addContainer h1 {
     font-family: 'Courier New', Courier, monospace;
+}
+
+#addContainer textarea {
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: bold; 
+    font-size: 40px;
+    text-align: center; 
+    color: rgb(241, 203, 32);
+    background: none;
+    border: none;
+    outline: none; 
+    height: 50px;
+    width: 100px;
+    resize: none; 
+
+}
+
+#addContainer button {
+    background-color: rgba(28,87,101,0.8);
+    color: rgba(241, 203, 32, 0.7);
+    box-shadow: 0.1em 0.1em rgb(28, 63, 17), 0.1em 0.1em rgba(255,255,255,0.4) inset;
+    border: none;
+    border-radius: 20px;
+    padding: 10px;
+    width: 30%;
+    margin-bottom: 1%;
+    outline: none; 
+    cursor: pointer;
 }
 
 #addContainer h2 {
@@ -58,6 +87,7 @@ html {box-sizing: border-box;}
     border-radius: 20px;
     padding: 10px;
     width: 30%;
+    cursor: pointer;
 }
 
 .addButton:hover, .addButton:focus {
@@ -68,19 +98,30 @@ html {box-sizing: border-box;}
 }
 
 #addedItems {
-    width: 40%;
-    height: 500px;
+    width: 75%;
+    height: 300px;
     overflow: scroll;
     border: 1px solid rgba(0,0,0,0.3);
     border-radius: 20px;
     box-shadow: 0.1em 0.1em rgb(28, 63, 17), 0.1em 0.1em rgba(255,255,255,0.4) inset;
+    display: flex;
+    flex-wrap: wrap;
+   
     
 }
 
 .choice {
     list-style: none;
-    margin-left: -30px;
-    margin-bottom: 1%;
+    width: 40%;
+    height: 35px;
+    margin: 10px;
+    background-color: rgba(28,87,101,0.8);
+    border: none;
+    box-shadow: 0.1em 0.1em rgb(28, 63, 17), 0.1em 0.1em rgba(255,255,255,0.4) inset;
+    color: rgba(241, 203, 32, 0.7);
+    border-radius: 20px;
+    padding: 10px;
+    overflow-x: auto;
 }
 
 

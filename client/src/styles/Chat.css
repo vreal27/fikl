@@ -1,12 +1,13 @@
 
 .chatcontainer {
     border: solid 1px black;
+
     
 }
 
 
 .roomwrap {
-    height:400px;
+    height: 500px;
     padding: 10px;
     display: flex;
     flex-direction: column;
@@ -18,7 +19,7 @@
 
 .chatbox {
     border: solid 1px black;
-    width: 80%;
+    width: 30%;
     height: 50%;
     border-radius: 5px;
     margin: 0 auto;
@@ -26,66 +27,88 @@
     flex-direction: column;
     overflow: auto;
     text-align: start;
-    background-color: rgba(28,87,101,0.62);
+    background-color: rgba(28,87,101,0.8);
+    box-shadow: 0.3em 0.3em rgb(55, 125, 34), 0.1em 0.1em rgba(255,255,255,0.4) inset;
     
 }
 .sendmessage {
     border: solid 1px black;
-    border-radius: 5px;
-    width: 75%;
-    margin: 0 auto;
+    border-radius: 5px; 
     margin-top: 10px;
+    width: 30%;
+    align-self: center;
+    background-color: rgba(28,87,101,0.8);
+    box-shadow: 0.3em 0.3em rgb(55, 125, 34), 0.1em 0.1em rgba(255,255,255,0.4) inset;
 }
 
 #submitform {
     outline: none;
-   
+    border: none;
+    width: 85%;
+    margin: 0;
     padding-left: 10px;
-    height: 63px;
-    width: 90%;
+    margin-top: 10px;
+    height: 42px;
     border-radius: 5px; 
     border-top-right-radius: 0;
     border-bottom-right-radius: 0;
-    border: none;
-    background-color: rgba(28,87,101,0.62);
+    background: none;
     
 }
 
 #submitButton {
     height: 63px;
-    width: 10%;
+    width: 15%;
     border: none;
     border-left: solid 1px black;
     border-radius: 5px;
     border-top-left-radius: 0;
     border-bottom-left-radius: 0;
     outline: none;
-    background-color: rgba(28,87,101,0.62);
+    background: none; 
     
+}
+
+#submitButton i {
+    font-size: 20px;
 }
 
 .message {
     display: inline-block;
     margin-left: 5px;
+    border: solid 1px black;
+    border-radius: 5px;
+    margin-left: 10px; 
+    word-wrap: break-word;
+    padding: 10px;
+    overflow: hidden;
 
 }
 
 .messagebox {
     font-size: 15px;
-    padding: 10px;
-    border: solid 1px black;
-    border-radius: 5px;
     width: 300px;
-    margin-left: 10px; 
+    margin-left: 10px;  
     word-wrap: break-word;
-    /* overflow-x: hidden;
-    overflow-y:visible; */
-    
+    display: flex;
+    align-items: center;
+    margin: 30px;
+   
+
+}
+
+.user {
+    margin: 10px; 
+    display: inline-block; 
+    margin-right: 2px; 
 }
 
 .slide-out-fwd-center {
+    margin-left: 10px;
+    font-size:20px;
 	-webkit-animation: slide-out-fwd-center 0.7s cubic-bezier(0.550, 0.085, 0.680, 0.530) reverse both;
-	        animation: slide-out-fwd-center 0.7s cubic-bezier(0.550, 0.085, 0.680, 0.530) reverse both;
+            animation: slide-out-fwd-center 0.7s cubic-bezier(0.550, 0.085, 0.680, 0.530) reverse both;
+    
 }
 
 
