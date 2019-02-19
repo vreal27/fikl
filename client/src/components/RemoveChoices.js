@@ -46,16 +46,6 @@ class Remove extends Component {
     render() {
         var elapsed = Math.round(this.state.elapsed / 100)
         var seconds = (elapsed / 10).toFixed(0)
-        var width = 300 - (seconds * 20)
-        var plural = ''
-        if(seconds === 1) {
-            plural = 'second'
-        } else {
-            plural = 'seconds'
-        }
-        if(width <= 40) {
-            width = 40
-        }
         return (
             <div id="removeContainer">
                 <div className="removeInstructions">
@@ -70,13 +60,14 @@ class Remove extends Component {
                        
                     ))}
                 </ul>
-                <p>Time Remaining: {15 - seconds} {plural}</p>
-                <div id="timeBar" style={{width: `${width}px`}}>
+                <div id="timeBar">
+                    <span id="timeremaining">{15 - seconds}</span>
                     <div id="wholetimeleft"></div>
                     <div id="wholetimeright"></div>
                     <div id="timelefteye"></div>
                     <div id="timerighteye"></div>
                     <div id="timersmile"></div>
+                    <div id="talkbubble"></div>
                 </div>
             </div>
         )
