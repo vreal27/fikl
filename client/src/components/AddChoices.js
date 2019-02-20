@@ -77,7 +77,7 @@ class AddChoices extends Component {
                  <button onClick={this.sayDone} className="addButton">I'm done adding!</button>
                  <ul id="addedItems">
                      {this.props.room.items.map((c, i) =>(
-                        <li key={`${c.id}${i}`} className="choice">{c.choice}</li>
+                       <li key={`${c.id}${i}`} className="choice">{c.choice}</li>
                     ))}
                 </ul>
 

@@ -6,8 +6,16 @@ html {
     font-family: Helvetica, Arial, Helvetica, sans-serif;
     color: rgba(241, 203, 32, 0.735);
 
+
 }
+
 *, *:before, *:after {box-sizing: inherit}
+
+@media only screen and (max-width: 500px){
+    .startcontainer {
+        width: 100%; 
+    }
+}
 
 #logo {
     font-family: "Bungee Shade", monospace;
@@ -22,7 +30,7 @@ html {
     justify-content: center;
     padding: 40px;
     margin: 30px auto;
-    width: 50%;
+    width: 600px;
     border-radius: 20%;
     box-shadow: 0.3em 0.3em rgb(55, 125, 34), 0.3em 0.3em rgba(255,255,255,0.4) inset; 
 }

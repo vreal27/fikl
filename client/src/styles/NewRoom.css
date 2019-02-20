@@ -1,12 +1,18 @@
 html {box-sizing: border-box;}
 *, *:before, *:after {box-sizing: inherit;}
 
+@media only screen and (max-width: 500px){
+    #newRoomContainer {
+        width: 100%; 
+    }
+}
+
 #newRoomContainer {
     text-align: center;
     margin: 0 auto;
     margin-top: 30px;
     background-color: rgba(28,87,101,0.62);
-    width: 50%;
+    width: 600px;
     color: rgb(241, 203, 32);
     padding: 2%;
     border-radius: 10%;
