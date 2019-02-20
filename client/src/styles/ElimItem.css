@@ -10,14 +10,13 @@
     display: flex;
     align-items: center;
     overflow: hidden;
-    width:30%;
+    width:600px;
     padding: 20px;
     border-radius: 20px;
     background-color: rgba(28,87,101,0.8);
     border-radius: 20px;
     box-shadow: 0.1em 0.1em rgb(28, 63, 17), 0.1em 0.1em rgba(255,255,255,0.4) inset;
 }
-
 
 #loadingbar {
     margin: -45px -60px;
@@ -152,8 +151,7 @@
     font-weight: lighter; 
     text-align: center;
     font-size: 70px;
-
-  }
+}
 
   #ellipsis {
       margin-left: 20px;
@@ -181,6 +179,20 @@
   @-webkit-keyframes ellipsis {
     to {
       width: 1.25em;    
+    }
+  }
+
+  @media only screen and (max-width: 500px){
+    #waitingcontainer {
+      width: 100%; 
+    }
+    #waiting {
+      font-size: 50px;
+    }
+    #ellipsis {
+      margin-left: 10px;
+      font-size: 50px;
+      display: inline-block;
     }
   }
 
