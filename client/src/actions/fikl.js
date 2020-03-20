@@ -7,6 +7,7 @@ axios.defaults.baseURL = '/api'
 
 const socket = io.connect('http://localhost:3001')
 
+
 //depreciated?
 export function postChoices(choice, code) {
   var promise = new Promise((resolve, reject) => {
@@ -15,7 +16,6 @@ export function postChoices(choice, code) {
       payload: {
         id: shortId.generate(),
         choice: choice,
-        status: true,
         code: code
 
       }})

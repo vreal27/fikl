@@ -112,6 +112,7 @@ html {box-sizing: border-box;}
     box-shadow: 0.1em 0.1em rgb(28, 63, 17), 0.1em 0.1em rgba(255,255,255,0.4) inset;
     display: flex;
     flex-wrap: wrap;
+    overflow: hidden; 
    
     
 }

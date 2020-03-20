@@ -12,7 +12,8 @@
   "license": "ISC",
   "dependencies": {
     "concurrently": "^4.1.0",
-    "react-copy-to-clipboard": "^5.0.1"
+    "react-copy-to-clipboard": "^5.0.1",
+    "socket.io": "^2.2.0"
   },
   "boilerplate": {
     "name": "react-server-boilerplate",
